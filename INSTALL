@@ -1,0 +1,20 @@
+
+* Adapter pour le nouvel évènement
+  * Paramétrer le fichier "www/config/params.inc.php"
+  * Adapter les bannières et logos
+  * Adapter les textes :
+    * www/content/lang
+    * www/content/class/lang
+    * www/page/lang
+
+* Retirer les données de démonstration
+  * Fichier "www/content/pkg/temps.inc.php" :
+     * Dans la fonction heure_H(), commenter la ligne : return 1;
+  * Répertoire "www/data/equipes/" : supprimer tous les fichiers de nom "???.txt"
+
+* Déposer le répertoire "www"
+
+* Attribuer les droits en écriture
+  * Répertoire "www/data/"
+  * Répertoire "www/data/equipes/"
+

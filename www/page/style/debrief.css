@@ -1,0 +1,25 @@
+table.debrief{
+border-collapse: collapse ;
+border: 2px solid black;
+}
+table.debrief th{
+text-align: center;
+font-weight: bolder;
+border-left: 2px solid black;
+}
+table.debrief td{
+border-left: 2px solid black;
+border-top: 1px solid gray;
+padding: 0 4px;
+}
+table.debrief tr.H{
+border-top: 2px solid black;
+background-color: #EEE;
+}
+table.debrief th.coin{
+border-top: none;
+border-left: none;
+width: 60px;
+background-color: silver;
+}
+table.debrief td.vide{background-color: #000 ;}

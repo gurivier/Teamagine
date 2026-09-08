@@ -1,0 +1,202 @@
+/***/
+p.apropos{
+border: 2px outset black;
+padding: 5px;
+margin-top: 40px;
+}
+/***/
+ul.equipes{
+float: right;
+margin: 0;
+list-style-type: none;
+padding: 0px;
+background-color: #FFF;
+width: 180px;
+}
+ul.equipes li{
+background-color: #000;
+margin:2px;
+padding: 5px;
+color: #E00;
+}
+ul.equipes a, ul.equipes a:visited{
+margin: 0;
+padding: 5px 15px;
+border: 1px solid gray;
+text-decoration: none;
+text-align: center;
+color: #E00;
+font-size: 12pt;
+font-weight: bolder;
+font-family: Arial, sans-serif;
+background-color: #000;
+display: block;
+}
+ul.equipes a:hover{
+color: #000;
+background: #E00;
+border: 1px dashed  #000;
+}
+/***/
+div.chrono{
+text-align: center;
+padding: 0;
+margin: 40px 0 10px 0;
+}
+div.chrono div{
+font-size: 11pt;
+font-weight: bolder;
+margin-top: 2pt;
+}
+div.chrono div.rouge{
+color: #E00;
+}
+div.chrono div.gris{
+color: gray;
+}
+/***/
+table.pauses{
+border-collapse: collapse ;
+border: 1px solid gray;
+}
+table.pauses td{
+border: 1px solid gray;
+text-align: center;
+padding: 5px 10px;
+}
+/***/
+table.activite{
+cursor: crosshair ;
+border: 1px solid gray ;
+padding: 10px;
+margin-bottom: 0;
+background-color: white;
+}
+table.activite td{
+padding: 0px;
+margin: 0px;
+width: 25px;
+height: 25px;
+}
+table.activite th{text-align: center;}
+table.activite a{
+cursor: crosshair ;
+padding: 0px;
+margin: 0px;
+width: 25px;
+height: 25px;
+display: block;
+border: 1px solid white ;
+}
+table.activite a:hover{border-color: #000080;}
+table.activite td.heuresH{
+text-align: center ;
+border: none;
+}
+table.activite td.alignR{
+border: none;
+padding-right: 5px;
+}
+table.activite td{text-align: center ;}
+table.activite td a{color: black ;}
+table.activite td.vi{background-color: white ;}
+table.activite td.rge{background-color: #A52A2A ;}
+table.activite td.org{background-color: #D2691E ;}
+table.activite td.jau{background-color: #E00 ;}
+table.activite td.ble{background-color: #4169E1 ;}
+table.activite td.ver1{background-color: #228B22 ;}
+table.activite td.ver2{background-color: #98FB98 ;}
+table.activite td.vio1{background-color: #800080 ;}
+table.activite td.vio2{background-color: #9400D3 ;}
+table.activite td.gri{background-color: #555 ;}
+table.activite td.aut{background-color: #000 ;}
+table.activite td.gri a{color: white;}
+table.activite td.aut a{color: white;}
+/***/
+table.activite_com{
+border-collapse: collapse;
+margin: 20px 0 50px 0;
+}
+table.activite_com td{
+padding: 5px 5px 5px 10px;
+vertical-align: top;
+}
+table.activite_com td.head1{
+text-align: center;
+border: 2px solid #000080 ;
+border-right: none;
+font-weight: bolder;
+width: 75px;
+vertical-align: middle;
+}
+table.activite_com td.head2{
+border-top: 2px solid black ;
+border-right: 2px solid black ;
+font-weight: bolder;
+text-align: center;
+}
+table.activite_com td.com1{
+width: 160px;
+height: 50px;
+border: 2px solid #000080 ;
+border-left: none;
+vertical-align: middle;
+padding: 0 1px 0 5px;
+}
+table.activite_com td.com2{
+width: 160px;
+border-bottom: 2px solid black ;
+border-right: 2px solid black ;
+padding-right: 1px;
+}
+/***/
+
+div.tlegende{
+width: 300px;
+background-color: white;
+}
+div.plegende{
+text-align: center;
+margin: 0;
+}
+a.legende, a.legende:visited{
+text-decoration: none;
+color: gray;
+background-color: #E6E6FA;
+padding:5px 5px 0;
+}
+a.legende:hover{
+background: none;
+background-color: #E6E6FA;
+cursor: help;
+}
+a.legende span.survol{display: none;}
+a.legende:hover span.survol{
+display: inline;
+position: absolute;
+left: 0px ;
+width: 400px;
+height: 100px;
+text-align: center;
+color: white;
+}
+table.activite td.legende{
+width: 250px;
+padding: 0 10px;
+}
+table.activite td.legendenpers{border: 1px solid black;}
+/***/
+table.form_activite{background-color: white; position: relative ; left: -150px; border: solid black 5px;}
+table.form_activite input.text{width: 110px;}
+table.form_activite textarea{width: 100%;}
+table.form_activite th{
+font-weight: bolder ;
+text-align: center;
+}
+table.form_activite tr.bg_rouge:hover{
+background-color: #FFC1C1;
+}
+table.form_activite tr.bg_gris:hover{
+background-color: #D8DEFF;
+}
+/***/

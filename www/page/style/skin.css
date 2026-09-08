@@ -1,0 +1,299 @@
+/***/
+body{
+margin-top: 5px; /* Sans les drapeaux : 30px */
+font-family: Arial, sans-serif;
+font-size: 14px;
+color: #000;
+background-color: inherit ;
+text-align: center; margin-left: 0; margin-right: 0; /* Compatibilite IE */
+}
+.fluxL{float: left; margin-right: 10px;}
+.fluxR{float: right; margin-left: 10px;}
+.flux{clear: both;}
+.margin{padding: 20px;}
+.underline{text-decoration: underline;}
+.center{text-align: center;}
+.alignR{text-align: right;}
+.alignL{text-align: left;}
+.orange{color: #FC0;}
+.rouge{color: #E00;}
+.gris{color: #C7CDEE;}
+.gray{color: gray;}
+.colored{color: #E00;font-weight: bolder;}
+.invisible{display: none;}
+.center{text-align: center;}
+.italic{font-style: italic;}
+.bold{font-weight: bolder;}
+.underline{text-decoration: underline;}
+img{border-style: none;}
+img.drapeau{padding: 1px; border: solid 1px gray;}
+img.drapeau-sel{padding: 1px; border: solid 1px black;}
+.erreur{color: red; font-weight: bolder;}
+.warn{color: red;}
+.star{color: red; font-weight: bolder; font-family: Arial, sans-serif;}
+.small{font-size: 10px;}
+a.lien_ext:after{content: "\0000a0[\2197]";} /* Liens externes */
+a.border img{padding: 3px;border: solid 1px #FFF;}
+a.border img:hover{border-color: #000;}
+/***/
+div{text-align: justify;}
+div#body{
+width: 80%;
+margin: 0 auto 0;
+}
+
+div#entete{
+margin: 0px auto 17px;
+padding: 0px;
+height: 260px;
+color: #000;
+background-color: #000;
+font-family: Arial, sans-serif;
+font-size: 16px;
+border-style: none;
+text-align: left;
+}
+
+div#entete p{
+font-size: 14pt;
+line-height: 25pt;
+position: relative;
+top: 80px;
+color: #E00;
+text-align: center;
+margin: 10pt;
+font-weight: bolder;
+}
+
+div#entete img{
+float: right;
+}
+
+div.corps{
+margin: 0 auto;
+padding: 0 50px;
+border: solid 2px #000;
+}
+div#corpsAccueil{
+color: #FFF;
+background-color: #000;
+}
+div#bandeauLogos{
+padding: 3px 20px;
+color: #FFF;
+border: solid 1px #000;
+background-color: #000;
+margin-bottom: 17px;
+text-align: center;
+}
+div#corpsPage{
+border: solid 5px #000;
+color: #000;
+background-color: #FFF;
+padding-top: 17px;
+}
+div#basdepage{
+margin: 15px auto 0;
+padding: 4pt 50px 0;
+border-top: #E00 solid 10px;
+color: #000;
+font-size: 10px;
+text-align: center;
+}
+img#logoevt{
+margin: 15px 15px 0 0;
+padding: 0;
+float: left;
+}
+img#carte{
+width: 537px;
+height: 503px;
+border: solid 1px gray;
+padding: 20px;
+}
+div.photos img{padding: 3px;border: solid 1px #FFF;}
+div.photos img:hover{border-color: #000;}
+div.sponsors img{padding: 30px 20px 30px 20px;border: solid 1px #FFF;}
+div.sponsors img:hover{border-color: #000;}
+div.sponsors_small img{padding: 2px 2px;border: solid 1px #000;}
+div.sponsors_small img:hover{border-color: #E00;}
+div.sponsors_small a{outline-color: #E00;}
+img.totem{
+padding: 15px;
+border: 3px solid #E00;
+border-right: 8px outset #E00;	
+border-bottom: 7px outset #E00;	
+position: relative;
+margin: 10px 40px 5px 5px;
+text-align:center;
+}
+img.logoW3C{
+width: 88px;
+height: 31px;
+}
+/***/
+div#menu{
+margin: 0 auto 17px;
+padding: 0 20px;
+background-color: #000;
+border: solid 2px #000;
+height: 140px;
+vertical-align: middle;
+}
+div#menu ul{
+margin: 5px 0 0 0;
+list-style-type: none;
+padding: 5px 0 40px 0;
+background-color: #000;
+}
+div#menu li{
+float: left;
+background-color: #000;
+padding: 5px 10px 5px 0;
+margin: 0;
+display: block;
+}
+div#menu a{
+float: left;
+padding: 5px 15px;
+margin: 0;
+border: 1px solid gray;
+text-decoration: none;
+text-align: center;
+color: #E00;
+font-size: 14pt;
+font-weight: bolder;
+font-family: Arial, sans-serif;
+background-color: #000;
+display: block;
+}
+div#menu a:hover{
+color: #000;
+background-color: #E00;
+border: 1px dashed  #000;
+}
+div#menu a.selected{border-color: #E00;}
+/***/
+ul.membres{list-style-type: square;}
+/***/
+.Annonce{
+text-align: center;
+font-weight: bolder;
+font-size: 18px;
+margin: 40px 0;
+}
+/***/
+ul#listeComite{
+list-style-type: none;
+padding: 0;
+}
+ul#listeComite li{padding: 20px 0;}
+ul#listeComite img{
+width:100px;
+height:100px;
+padding: 5px 5px 5px 5px;
+border: 1px solid #E00;
+border-right: 3px outset #E00;	
+border-bottom: 4px outset #E00;	
+position: relative;
+float:left;
+margin: 0 15px 10px 70px;
+text-align:center;
+}
+/***/
+ul.Form{
+margin: 0 auto;
+list-style-type: none;
+}
+ul.Form li.niv2{margin-left: 30px;}
+ul.details{list-style-image: url(img/bullet.jpg);}
+ul.presse{list-style-image: url(img/bullet.jpg);padding-bottom: 20px;}
+ul.presse li{padding-bottom: 25px;}
+ul.presse img{padding: 3px;border: solid 1px #FFF;}
+ul.presse a img:hover{border-color: #000;}
+
+h4{padding: 0px 20px; background-color: #FFF168; cursor: pointer;}
+ul.saisons{list-style-image: url(img/bullet.jpg); display: none;}
+ul.saisons li{padding-bottom: 10px;}
+/***/
+h1{
+padding-top: 20px;
+font-size: 24px;
+font-weight: bolder;
+}
+h2{
+margin-top: 40px;
+background-color: #000;
+color: #E00;
+font: bold 24px Arial, sans-serif;
+border: solid 2px #E00;
+border-left-width: 20px;
+padding: 12px 10px;
+}
+div#corpsPage h3{
+border: dashed 1px gray;
+padding: 5px 10px;
+margin-top: 50px;
+}
+div#corpsAccueil h3{
+border: dashed 1px white;
+padding: 5px 10px;
+margin-top: 50px;
+}
+p.pointilles{
+border: none 0;
+border-top: 1px dashed #BBB;
+margin-top: 20px;
+padding-top: 4px;
+}
+textarea{
+width: 500px;
+border-bottom: solid 1px gray;
+border-right: solid 1px gray;
+}
+input.text{width: 250px;}
+input.text_verysmall{width: 30px;}
+input.text_large{width: 500px;}
+input.text_small{width: 110px;}
+input.text_medium{width: 180px;}
+/***/
+table{
+margin: 0 auto;
+color: black;
+}
+table.FormIdentite td{text-align: center; color: black;}
+table.FormIdentite td.col2{text-align: left;}
+form.FormInscription table.Champs td{
+vertical-align: top;
+text-align: right;
+color: black;
+}
+/***/
+form#FormLoginEquipe p{margin: 50px 0 100px 0;}
+/***/
+a{
+text-decoration: none;
+color: #03F;
+background-color: inherit ;
+}
+a:hover{
+background-color: inherit ;
+color: #E00;
+}
+a:visited{
+color: #03F;
+background-color: inherit ;
+text-decoration: none;
+}
+a.colored{
+text-decoration: none;
+color: #E00;
+background-color: inherit ;
+}
+a.colored:hover{color: #FFF;}
+a.colored:visited{color: #E00;}
+p.green a{font-size:16px; font-weight:bold; color: #00A040; border: 1px solid #00A040; padding:2px 20px;}
+p.green a:hover{color: #0F0; border-color:#0F0}
+a.docu{font-size:16px; font-weight:bold; color: #FFF; border: 1px solid #E00; padding:2px 20px;}
+a.docu:hover{color: #000; background-color: #E00!;}
+/***/

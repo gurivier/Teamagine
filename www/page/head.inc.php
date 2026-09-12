@@ -2,7 +2,6 @@
 echo '<?xml version="1.0" encoding="iso-8859-1"?>'."\r\n";
 $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
 include('page/lang/'.$lang.'/'.$lang.'_page.inc.php');
-include_once('config/params.inc.php'); // $ev
 
 $page_equipes = isset($page_equipes) && $page_equipes;
 $page_saisons = isset($page_saisons) && $page_saisons;
@@ -16,9 +15,9 @@ $page_debrief = isset($page_debrief) && $page_debrief;
  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=ISO-8859-1" />
 <?php
 
-echo '<link rel="icon" type="image/png" href="page/img/ico_32x32.png" />'."\r\n";
+echo '<link rel="icon" type="image/png" href="page/img/ico_32x32-'.$ev->couleur.'.png" />'."\r\n";
 
-echo '<link href="page/style/skin.css?v=141010" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+echo '<link href="page/style/skin.css?v=131010" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
 
 if ($ev->couleur != 'rouge'){
   echo '<link href="page/style/skin-'.$ev->couleur.'.css?v=120926" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";

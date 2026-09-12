@@ -1,5 +1,7 @@
 <?php
 
+include_once('config/Evenement.class.php'); // $ev
+
 include_once('pkg/erreurs.inc.php');
 
 //== i18n

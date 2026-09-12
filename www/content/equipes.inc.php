@@ -10,7 +10,6 @@ echo '<div class="fluxL">';
 
 echo '<p class="bold">'.$body_title_01.'<br/>'.$body_title_02.'<br/><br/></p>';
 
-include_once('config/params.inc.php'); // $ev
 include_once('pkg/temps.inc.php'); // $H
 
 echo '<p>'.heure().'</p>';

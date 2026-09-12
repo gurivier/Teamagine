@@ -4,6 +4,9 @@
 
 class Evenement {
 
+  // Execution
+  var $montrer_erreurs_php = true;
+
   // Theme
   var $couleur = 'rouge'; // bleu rose rouge sarcelle vert
     
@@ -52,7 +55,5 @@ class Evenement {
 //== GLOBALES
 
 $ev = new Evenement();
-
-$montrer_erreurs_php = true;
 
 ?>

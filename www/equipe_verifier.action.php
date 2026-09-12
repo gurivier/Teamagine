@@ -1,5 +1,7 @@
 <?php
 
+include_once('config/Evenement.class.php'); // $ev
+
 include_once('pkg/erreurs.inc.php');
 
 $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];

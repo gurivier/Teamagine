@@ -1,7 +1,7 @@
 
 * Adapter pour le nouvel évènement
-  * Paramétrer le fichier "www/config/params.inc.php"
-  * Adapter les bannières et logos
+  * Paramétrer le fichier "www/config/Evenement.class.php"
+  * Adapter les images de bannières, logos et totems
   * Adapter les textes :
     * www/content/lang
     * www/content/class/lang
@@ -13,7 +13,7 @@
   * Répertoire "www/data/equipes/" : supprimer tous les fichiers de nom "???.txt"
 
 * Sortir du mode développement
-  * Dans le fichier "www/config/params.inc.php" :
+  * Dans le fichier "www/config/Evenement.class.php" :
      * Désactiver l'affichage des erreurs : $montrer_erreurs_php = false;
 
 * Déposer le répertoire "www"

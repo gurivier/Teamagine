@@ -646,6 +646,7 @@ class Equipe {
   var $m_txt_modifier_fiche;
   /*--*/
   var $m_txt_projet_;
+  var $m_txt_membres_;
   var $m_txt_processus_creativite_;
   var $m_txt_legende;
   var $m_txt_passer_souris;

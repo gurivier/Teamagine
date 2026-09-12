@@ -3,8 +3,11 @@
 //== CLASSE
 
 class Evenement {
+
+  // Theme
+  var $couleur = 'rouge'; // bleu rose rouge sarcelle vert
     
-  // Team members
+  // Membres des equipes
   var $max_membres = 10;
   
   // Date
@@ -12,13 +15,14 @@ class Evenement {
   var $depart_M = '12';
   var $depart_J = '03';
 
-  // Time
+  // Horaire
   var $depart_h = '14';
   var $depart_m = '00';
 
   // Heures
   var $duree = 120;
 
+  // Informations
   var $nom = array('fr' => 'Concours Créatif', 'en' => 'Creative Contest');
   var $url = 'https://www.creativity.eu';
   var $contact = 'contact@creativity.eu';

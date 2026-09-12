@@ -15,7 +15,7 @@ include_once('pkg/temps.inc.php'); // $H
 
 echo '<p>'.heure().'</p>';
 
-chrono_afficher($H, ($H > 0 && $H < $ev->duree) ? 'rouge' : 'gris');
+chrono_afficher($H, ($H > 0 && $H < $ev->duree));
 
 include_once('class/HeureActivite.class.php');
 

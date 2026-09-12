@@ -21,7 +21,7 @@ class Vainqueur {
 
 /* Palmares des equipes dans l'ordre de classement (en partant du premier prix) */
 $vainqueurs = [
- new Vainqueur('100', $h2_1, 'content/img/totem2026_'.$lang.'.png'),
+ new Vainqueur('100', $h2_1, 'content/img/totem2026-'.$ev->couleur.'_'.$lang.'.png'),
  new Vainqueur('011', $h2_2, ''),
  new Vainqueur('010', $h2_3, '')
 ];

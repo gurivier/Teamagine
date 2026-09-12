@@ -113,18 +113,19 @@ class Equipe {
   }
 
   function afficher_projet() {
-    echo '<p class="bold">'.$this->m_txt_projet_.' '.str_replace('\\\'', "'", $this->m_projet).'</p>'."\r\n";
+    echo '<p class="bold"><span class="upper">'.$this->m_txt_projet_.'</span> '.str_replace('\\\'', "'", $this->m_projet).'</p>'."\r\n";
   }
     
   function afficher_membres() {
     if (isset($this->m_membres) && count($this->m_membres) > 0) {
-      echo '<ul class="membres">';
+    echo '<p class="bold upper">'.$this->m_txt_membres_.'</p>'."\r\n";
+      echo '<ol class="membres">';
       foreach ($this->m_membres as $key => $membre) {
         echo '<li>';
         $membre->afficher();
         echo '</li>';
       }
-      echo '</ul>'."\r\n";
+      echo '</ol>'."\r\n";
     }
   }
 

@@ -15,7 +15,7 @@ fclose($desc);
 
 echo '<div id="menu">';
 
-echo '<img id="logoevt" src="page/img/logo.png" alt="Logo '.$ev->nom[$lang].'" />';
+echo '<img id="logoevt" src="page/img/logo-'.$ev->couleur.'.png" alt="Logo '.$ev->nom[$lang].'" />';
 
 echo '<ul>';
 

@@ -1,0 +1,13 @@
+.colored{color: #8DD35F;}
+div#entete p{color: #8DD35F;}
+div#basdepage{border-top-color: #8DD35F;}
+div.sponsors_small img:hover{border-color: #8DD35F;}
+div.sponsors_small a{outline-color: #8DD35F;}
+img.totem{border-color: #8DD35F;}
+div#menu a{color: #8DD35F;}
+div#menu a:hover{background-color: #8DD35F;}
+div#menu a.selected{border-color: #8DD35F;}
+h2{color: #8DD35F;border-color: #8DD35F;}
+a:hover{color: #8DD35F;}
+a.colored{color: #8DD35F;}
+a.colored:visited{color: #8DD35F;}

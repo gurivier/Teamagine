@@ -22,7 +22,7 @@ $selected='informations';
 include('page/menu.inc.php');
 
 //== content
-echo '<div id="corpsPage" class="corps">';
+echo '<div id="corpsAccueil" class="corps">';
 
 echo '<p class="italic bold center">'.$body_title.'</p>';
 

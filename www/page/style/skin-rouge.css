@@ -1,0 +1,13 @@
+.colored{color: #E00;}
+div#entete p{color: #E00;}
+div#basdepage{border-top-color: #E00;}
+div.sponsors_small img:hover{border-color: #E00;}
+div.sponsors_small a{outline-color: #E00;}
+img.totem{border-color: #E00;}
+div#menu a{color: #E00;}
+div#menu a:hover{background-color: #E00;}
+div#menu a.selected{border-color: #E00;}
+h2{color: #E00;border-color: #E00;}
+a:hover{color: #E00;}
+a.colored{color: #E00;}
+a.colored:visited{color: #E00;}

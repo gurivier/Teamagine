@@ -12,6 +12,10 @@
      * Dans la fonction heure_H(), commenter la ligne : return 1;
   * Répertoire "www/data/equipes/" : supprimer tous les fichiers de nom "???.txt"
 
+* Sortir du mode développement
+  * Dans le fichier "www/config/params.inc.php" :
+     * Désactiver l'affichage des erreurs : $montrer_erreurs_php = false;
+
 * Déposer le répertoire "www"
 
 * Attribuer les droits en écriture

@@ -33,8 +33,8 @@ if (isset($_GET['mess']) && $_GET['mess'] == 'err') {
 echo '<h3>'.$h3_1.'</h3>';
 echo '<form id="FormLoginEquipe" method="post" action="equipe_verifier.action.php?lang='.$lang.'">';
 echo '<p>';
-echo $txt_numero.' <input class="text" type="text" id="Login" name="e" />';
-echo $txt_passwd.' <input class="text" type="password" id="Pass" name="Pass" />';
+echo $txt_numero.' <input class="text" type="text" id="Login" name="e" /> ';
+echo $txt_passwd.' <input class="text" type="password" id="Pass" name="Pass" /> ';
 echo '<input type="submit" value="'.$txt_btn_valider.'" id="FormLogin" name="FormLogin" />';
 echo '</p>';
 echo '</form>';

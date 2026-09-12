@@ -63,24 +63,26 @@ function chrono_afficher_alpha($h) {
 
 }
 
-function chrono_afficher($h, $couleur) {
+function chrono_afficher($h, $avec_couleur) {
   global $ev;
-    
+
+  $couleur = $avec_couleur ? $ev->couleur : 'gris';
+  
   $nombre = $h; // Le nombre a decomposer
 
   echo '<div class="chrono">';
 
   /* Debut de l'affichage */
-  echo '<img src="content/img/chrono/'.$couleur.'/bordL.png" alt="[" />';
-  echo '<img src="content/img/chrono/'.$couleur.'/H.png" alt="H" />';
-  echo '<img src="content/img/chrono/'.$couleur.'/egal.png" alt="=" />';
+  echo '<img src="content/img/chrono2026/'.$couleur.'/bordG.png" alt="[" />';
+  echo '<img src="content/img/chrono2026/'.$couleur.'/H.png" alt="H" />';
+  echo '<img src="content/img/chrono2026/'.$couleur.'/egal.png" alt="=" />';
 
   /* Si le nombre est negatif,
    * afficher un moins,
    * puis afficher la partie absolue.
    */
   if ($nombre < 0) {
-    echo '<img src="content/img/chrono/'.$couleur.'/moins.png" alt="-" />';
+    echo '<img src="content/img/chrono2026/'.$couleur.'/moins.png" alt="-" />';
     $nombre = $nombre * -1;
   }
 
@@ -93,10 +95,10 @@ function chrono_afficher($h, $couleur) {
 
   /* Affichage du nombre */
   for ($i = count($tab)-1 ; $i >= 0  ; $i--)
-    echo '<img src="content/img/chrono/'.$couleur.'/'.$tab[$i].'.png" alt="'.$tab[$i].'" />';
+    echo '<img src="content/img/chrono2026/'.$couleur.'/'.$tab[$i].'.png" alt="'.$tab[$i].'" />';
   
   /* Fin de l'affichage */
-  echo '<img src="content/img/chrono/'.$couleur.'/bordR.png" alt="]" />'."\r\n";
+  echo '<img src="content/img/chrono2026/'.$couleur.'/bordD.png" alt="]" />'."\r\n";
 
   if ($h >= -3 && $h <= $ev->duree + 1) {
       heure_intervalle_courant($h, $debut, $fin);

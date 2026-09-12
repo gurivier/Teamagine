@@ -18,7 +18,11 @@ $page_debrief = isset($page_debrief) && $page_debrief;
 
 echo '<link rel="icon" type="image/png" href="page/img/ico_32x32.png" />'."\r\n";
 
-echo '<link href="page/style/skin.css?v=181010" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+echo '<link href="page/style/skin.css?v=141010" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+
+if ($ev->couleur != 'rouge'){
+  echo '<link href="page/style/skin-'.$ev->couleur.'.css?v=120926" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+}
 
 if ($msie=preg_match("/msie/", strtolower(getenv('HTTP_USER_AGENT')))) {
   echo '<link href="page/style/msie.css?v=170910" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
@@ -28,6 +32,9 @@ echo '<link href="page/style/print.css" rel="stylesheet" type="text/css" media="
 
 if ($page_equipes) {
  echo '<link href="page/style/equipes.css?v3" rel="stylesheet" type="text/css" title="screen1" />';
+ if ($ev->couleur != 'rouge'){
+  echo '<link href="page/style/equipes-'.$ev->couleur.'.css?v3" rel="stylesheet" type="text/css" title="screen1" />';
+ }
 }
 
 if ($page_debrief) {

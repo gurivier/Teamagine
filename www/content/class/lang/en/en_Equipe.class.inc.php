@@ -3,6 +3,7 @@
 $this->m_txt_modifier_fiche='Modify the sheet';
 
 $this->m_txt_projet_='Project:';
+$this->m_txt_membres_='Members:';
 $this->m_txt_processus_creativite_='Creativity process:';
 $this->m_txt_legende='Caption';
 $this->m_txt_passer_souris='Move the mouse cursor over the boxes to see below the description of the activity.';

@@ -16,7 +16,11 @@ text-align: center; margin-left: 0; margin-right: 0; /* Compatibilite IE */
 .alignR{text-align: right;}
 .alignL{text-align: left;}
 .orange{color: #FC0;}
+.sarcelle{color: #008080;}
 .rouge{color: #E00;}
+.rose{color: #DE87CD;}
+.bleu{color: #009DDF;}
+.vert{color: #8DD35F;}
 .gris{color: #C7CDEE;}
 .gray{color: gray;}
 .colored{color: #E00;font-weight: bolder;}
@@ -24,6 +28,7 @@ text-align: center; margin-left: 0; margin-right: 0; /* Compatibilite IE */
 .center{text-align: center;}
 .italic{font-style: italic;}
 .bold{font-weight: bolder;}
+.upper{text-transform: uppercase;}
 .underline{text-decoration: underline;}
 img{border-style: none;}
 img.drapeau{padding: 1px; border: solid 1px gray;}
@@ -71,8 +76,13 @@ float: right;
 
 div.corps{
 margin: 0 auto;
-padding: 0 50px;
+padding: 17px 50px 50pt;
 border: solid 2px #000;
+}
+div#corpsPage{
+border: solid 5px #000;
+color: #000;
+background-color: #FFF;
 }
 div#corpsAccueil{
 color: #FFF;
@@ -85,12 +95,6 @@ border: solid 1px #000;
 background-color: #000;
 margin-bottom: 17px;
 text-align: center;
-}
-div#corpsPage{
-border: solid 5px #000;
-color: #000;
-background-color: #FFF;
-padding-top: 17px;
 }
 div#basdepage{
 margin: 15px auto 0;
@@ -174,7 +178,15 @@ border: 1px dashed  #000;
 }
 div#menu a.selected{border-color: #E00;}
 /***/
-ul.membres{list-style-type: square;}
+@counter-style num-membres {
+system: numeric;
+ symbols: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9";
+ prefix: "◐";
+ suffix: "◑ ";
+ font-weight: bolder;
+}
+ol.membres{list-style: num-membres;}
+ol.membres li{margin-left: 3pt;padding-left: 4pt;margin-bottom: 4pt;}
 /***/
 .Annonce{
 text-align: center;
@@ -292,8 +304,4 @@ background-color: inherit ;
 }
 a.colored:hover{color: #FFF;}
 a.colored:visited{color: #E00;}
-p.green a{font-size:16px; font-weight:bold; color: #00A040; border: 1px solid #00A040; padding:2px 20px;}
-p.green a:hover{color: #0F0; border-color:#0F0}
-a.docu{font-size:16px; font-weight:bold; color: #FFF; border: 1px solid #E00; padding:2px 20px;}
-a.docu:hover{color: #000; background-color: #E00!;}
 /***/

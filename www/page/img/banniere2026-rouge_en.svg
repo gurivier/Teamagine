@@ -8,8 +8,8 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
-   sodipodi:docname="banner2026_en.svg"
-   inkscape:export-filename="banner2026_en.png"
+   sodipodi:docname="banniere2026-rouge_en.svg"
+   inkscape:export-filename="banniere2026-rouge_en.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.74712644"
-     inkscape:cx="399.53077"
-     inkscape:cy="171.99231"
+     inkscape:zoom="1"
+     inkscape:cx="370.5"
+     inkscape:cy="65.5"
      inkscape:window-width="1920"
      inkscape:window-height="1018"
      inkscape:window-x="0"
@@ -80,13 +80,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:'TeX Gyre Termes';-inkscape-font-specification:'TeX Gyre Termes';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ee0000;fill-opacity:1;stroke:none;stroke-width:0.1"
-       x="39.736103"
+       x="39.73539"
        y="62.568336"
-       id="text11"><tspan
+       id="text3"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Pixel;-inkscape-font-specification:Pixel;fill:#ee0000;fill-opacity:1;stroke-width:0.1;stroke:none"
-         x="39.736103"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Pixel;-inkscape-font-specification:Pixel;fill:#ee0000;fill-opacity:1;stroke:none;stroke-width:0.1"
+         x="39.73539"
          y="62.568336"
-         id="tspan11">1st Edition – 2026</tspan></text>
+         id="tspan3">1st Edition – 2026</tspan></text>
   </g>
 </svg>

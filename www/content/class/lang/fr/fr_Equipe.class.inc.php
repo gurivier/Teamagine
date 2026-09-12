@@ -2,8 +2,9 @@
 
 $this->m_txt_modifier_fiche='Modifier la fiche';
 
-$this->m_txt_projet='Projet :';
-$this->m_txt_processus_creativite='Processus de cr&eacute;ativit&eacute; :';
+$this->m_txt_projet_='Projet :';
+$this->m_txt_membres_='Membres :';
+$this->m_txt_processus_creativite_='Processus de cr&eacute;ativit&eacute; :';
 $this->m_txt_legende='L&eacute;gende';
 $this->m_txt_passer_souris='Passez la souris sur les cases pour voir ci-dessous la description de l\'activit&eacute;.';
 $this->m_txt_les_pauses='(Les heures de pause sont affich&eacute;es en <span class="gray bold">gris</span>)';

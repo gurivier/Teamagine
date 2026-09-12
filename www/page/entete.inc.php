@@ -14,7 +14,7 @@ echo '</div>'."\r\n";
 //-- Banniere
 echo '<div id="entete" class="flux">';
 
-echo '<img id="pavillon" src="page/img/banner2026_'.$lang.'.png?v=202605" alt="'.$alt_event.'" />';
+echo '<img id="pavillon" src="page/img/banniere2026-'.$ev->couleur.'_'.$lang.'.png?v=202605" alt="'.$alt_event.'" />';
 
 echo '<p>';
 echo $ev->info1[$lang];

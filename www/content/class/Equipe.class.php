@@ -81,12 +81,12 @@ class Equipe {
   }
 
   public function ajouter_membre($nom, $prenom, $affiliation) {
-      $membre = new Membre($nom, $prenom, $affiliation);
-      array_push($this->m_membres, $membre);
+    $membre = new Membre($nom, $prenom, $affiliation);
+    array_push($this->m_membres, $membre);
   }
 
   public function ajouter_activite($activite) {
-      array_push($this->m_activites, $activite);
+    array_push($this->m_activites, $activite);
   }
 
   protected function generer_js_afficher_colone($h) {
@@ -94,56 +94,56 @@ class Equipe {
     $com_quoi = $this->m_activites[$h]->get_com_quoi();
     $com_outils = $this->m_activites[$h]->get_com_outils();
     if ($com_etape != '' || $com_quoi != '' || $com_outils != '') {
-      echo 'function afficher_colone_'.$this->m_num.'_'.$h.'() {'."\r\n";
-      echo 'document.getElementById(\'ComEtape'.$this->m_num.'\').innerHTML = \'H='.($h+1).' : '.str_replace("'", '\\\'', str_replace('\nl', "<br/>", $com_etape)).'\';'."\r\n";
-      echo 'document.getElementById(\'ComQuoi'.$this->m_num.'\').innerHTML = \'H='.($h+1).' : '.str_replace("'", '\\\'', str_replace('\nl', "<br/>", $com_quoi)).'\';'."\r\n";
-      echo 'document.getElementById(\'ComOutils'.$this->m_num.'\').innerHTML = \'H='.($h+1).' : '.str_replace("'", '\\\'', str_replace('\nl', "<br/>", $com_outils)).'\';'."\r\n";
-      echo '}'."\r\n";
+      e('function afficher_colone_'.$this->m_num.'_'.$h.'() {');
+      e('document.getElementById(\'ComEtape'.$this->m_num.'\').innerHTML = \'H='.($h+1).' : '.str_replace("'", '\\\'', str_replace('\nl', "<br/>", $com_etape)).'\';');
+      e('document.getElementById(\'ComQuoi'.$this->m_num.'\').innerHTML = \'H='.($h+1).' : '.str_replace("'", '\\\'', str_replace('\nl', "<br/>", $com_quoi)).'\';');
+      e('document.getElementById(\'ComOutils'.$this->m_num.'\').innerHTML = \'H='.($h+1).' : '.str_replace("'", '\\\'', str_replace('\nl', "<br/>", $com_outils)).'\';');
+      e('}');
       return true;
     }
     return false;
   }
 
   protected function generer_js_afficher_colone_vide() {
-    echo 'function afficher_colone_'.$this->m_num.'_vide() {'."\r\n";
-    echo 'document.getElementById(\'ComEtape'.$this->m_num.'\').innerHTML = \'H=\';'."\r\n";
-    echo 'document.getElementById(\'ComQuoi'.$this->m_num.'\').innerHTML = \'H=\';'."\r\n";
-    echo 'document.getElementById(\'ComOutils'.$this->m_num.'\').innerHTML = \'H=\';'."\r\n";
-    echo '}'."\r\n";
+    e('function afficher_colone_'.$this->m_num.'_vide() {');
+    e('document.getElementById(\'ComEtape'.$this->m_num.'\').innerHTML = \'H=\';');
+    e('document.getElementById(\'ComQuoi'.$this->m_num.'\').innerHTML = \'H=\';');
+    e('document.getElementById(\'ComOutils'.$this->m_num.'\').innerHTML = \'H=\';');
+    e('}');
   }
 
   protected function afficher_nom($tag) {
-    echo '<'.$tag.'><a name="'.$this->m_num.'"> </a>'.$this->m_num.' - '.str_replace('\\\'', "'", $this->m_nom).'</'.$tag.'>'."\r\n";
+    e('<'.$tag.'><a name="'.$this->m_num.'"> </a>'.$this->m_num.' - '.str_replace('\\\'', "'", $this->m_nom).'</'.$tag.'>');
   }
 
   protected function afficher_projet() {
-    echo '<p class="bold"><span class="upper">'.$this->m_txt_projet_.'</span> '.str_replace('\\\'', "'", $this->m_projet).'</p>'."\r\n";
+    e('<p class="bold"><span class="upper">'.$this->m_txt_projet_.'</span> '.str_replace('\\\'', "'", $this->m_projet).'</p>');
   }
     
   protected function afficher_membres() {
     if (isset($this->m_membres) && count($this->m_membres) > 0) {
-    echo '<p class="bold upper">'.$this->m_txt_membres_.'</p>'."\r\n";
-      echo '<ol class="membres">';
+      e('<p class="bold upper">'.$this->m_txt_membres_.'</p>');
+      e('<ol class="membres">');
       foreach ($this->m_membres as $key => $membre) {
-        echo '<li>';
+        e('<li>');
         $membre->afficher();
-        echo '</li>';
+        e('</li>');
       }
-      echo '</ol>'."\r\n";
+      e('</ol>');
     }
   }
 
   public function afficher_pour_palmares($txt_prix, $img_prix='') {
 
     /* Afficher le prix */
-    echo '<h2>'.$txt_prix.'</h2>';
+    e('<h2>'.$txt_prix.'</h2>');
     
     /* Afficher le nom de l'equipe */
     $this->afficher_nom('h3');
 
     /* Afficher le prix */
     if ($img_prix != '') {
-      echo '<img class="fluxR totem" src="'.$img_prix.'" alt="Award for '.$txt_prix.'" />';
+      e('<img class="fluxR totem" src="'.$img_prix.'" alt="Award for '.$txt_prix.'" />');
     }
     
     /* Afficher le projet de l'equipe */
@@ -153,7 +153,7 @@ class Equipe {
     $this->afficher_membres();
 
     if ($img_prix != '') {
-      echo '<br class="flux" />';
+      e('<br class="flux" />');
     }
   }
 
@@ -166,7 +166,7 @@ class Equipe {
     $this->afficher_nom('h2');
     
     if ($H > 0 && $H <= $ev->duree) {
-      echo '<p class="fluxR"><a href="equipe_fiche.php?lang='.$lang.'&amp;e='.$this->m_num.'">'.$this->m_txt_modifier_fiche.'</a></p>'."\r\n";
+      e('<p class="fluxR"><a href="equipe_fiche.php?lang='.$lang.'&amp;e='.$this->m_num.'">'.$this->m_txt_modifier_fiche.'</a></p>');
     }
     
     /* Afficher le projet de l'equipe */
@@ -174,18 +174,22 @@ class Equipe {
     
     /* Afficher le lieu de travail de l'equipe */
     if (isset($_GET['lieu'])) {
-      echo '<p><span class="bold">'.$this->m_txt_lieu.'</span> ';
-      echo Equipe::$G_txt_lieu[$this->m_lieu_etage];
-      if ($this->m_lieu_salle!='') echo ' / '.$this->m_txt_salle.' '.str_replace('\\\'', "'", $this->m_lieu_salle);
-      if ($this->m_lieu_endroit!='') echo ' / '.str_replace('\\\'', "'", $this->m_lieu_endroit);
-      echo '</p>'."\r\n";
+      e('<p><span class="bold">'.$this->m_txt_lieu.'</span> ');
+      e(Equipe::$G_txt_lieu[$this->m_lieu_etage]);
+      if ($this->m_lieu_salle!='') {
+        e(' / '.$this->m_txt_salle.' '.str_replace('\\\'', "'", $this->m_lieu_salle));
+      }
+      if ($this->m_lieu_endroit!='') {
+        e(' / '.str_replace('\\\'', "'", $this->m_lieu_endroit));
+      }
+      e('</p>');
     }
 
     /* Afficher les membres de l'equipe */
     $this->afficher_membres();
     
     /* Generer le js */
-    echo '<script type="text/javascript">'."\r\n";
+    e('<script type="text/javascript">');
     $com_col = array();
     $generer_col_vide = true;
     for ($h=0 ; $h < $ev->duree ; $h++) {
@@ -200,7 +204,7 @@ class Equipe {
         $com_col[$h] = 'afficher_colone_'.$this->m_num.'_vide();';
       }
     }
-    echo '</script>'."\r\n";
+    e('</script>');
 
     /*-- Afficher le suivi des activites --*/
 
@@ -215,24 +219,24 @@ class Equipe {
     /* Afficher le tableau */
     if ($max > 0) {
 
-      echo '<p class="bold">'.$this->m_txt_processus_creativite_.'</p>'."\r\n";
+      e('<p class="bold">'.$this->m_txt_processus_creativite_.'</p>');
 
       /* Afficher les activites par ligne decroissante pour toutes les heures H */
 
       //--
-      echo '<div class="plegende"><a class="legende" href="#'.$this->m_num.'">&nbsp; '.$this->m_txt_legende.' &nbsp;<span class="survol">';
+      e('<div class="plegende"><a class="legende" href="#'.$this->m_num.'">&nbsp; '.$this->m_txt_legende.' &nbsp;<span class="survol">');
       $activite = new HeureActivite();
       $activite->afficher_legende();
-      echo '</span></a></div>';
+      e('</span></a></div>');
       //--
 
       $i = $max-1; // la ligne a afficher
-      echo '<table class="activite">'."\r\n";
+      e('<table class="activite">');
       while ($i>=0) {
-        echo '<tr>';
+        e('<tr>');
 
         /* Premiere cellule */
-        echo '<td class="alignR">'.($i+1).'.</td>';
+        e('<td class="alignR">'.($i+1).'.</td>');
 
         for ($h = 0 ; $h < $ev->duree ; $h++) {
           if ($this->m_activites[$h]->get_nbr_activite() > $i) {
@@ -267,57 +271,57 @@ class Equipe {
             $personnes = '';
           }
           
-          echo '<td class="'.$color.'" onmouseover="HeadEtape'.$this->m_num.'.style.color = \''.$colorEtape.'\'; ActiviteEtape'.$this->m_num.'.innerHTML = \''.$etape.'\'; ActiviteQuoi'.$this->m_num.'.innerHTML = \''.$quoi.'\'; ActiviteOutils'.$this->m_num.'.innerHTML = \''.$outils.'\' ; '.$com_col[$h].'"><a href="#">'.$personnes.'</a></td>';
+          e('<td class="'.$color.'" onmouseover="HeadEtape'.$this->m_num.'.style.color = \''.$colorEtape.'\'; ActiviteEtape'.$this->m_num.'.innerHTML = \''.$etape.'\'; ActiviteQuoi'.$this->m_num.'.innerHTML = \''.$quoi.'\'; ActiviteOutils'.$this->m_num.'.innerHTML = \''.$outils.'\' ; '.$com_col[$h].'"><a href="#">'.$personnes.'</a></td>');
         }
-        echo '</tr>'."\r\n";
+        e('</tr>');
         $i--;
       }
 
       /* Afficher la ligne des heures H */
-      echo '<tr>';
-      echo '<td> </td>'; // Premiere cellule : vide
+      e('<tr>');
+      e('<td> </td>'); // Premiere cellule : vide
       for ($h = 0 ; $h < $ev->duree ; $h++) {
-          echo '<td class="bold heuresH '.(($this->m_pauses[$h]) ? 'gray' : '').'">'.($h+1).'</td>';
+        e('<td class="bold heuresH '.(($this->m_pauses[$h]) ? 'gray' : '').'">'.($h+1).'</td>');
       }
-      echo '</tr>'."\r\n";
+      e('</tr>');
 
-      echo '</table>';
+      e('</table>');
 
-      echo '<p>';
-      echo $this->m_txt_passer_souris;
-      echo '<span class="italic">'.$this->m_txt_les_pauses.'</span> ';
-      echo '</p>'."\r\n";
+      e('<p>');
+      e($this->m_txt_passer_souris);
+      e('<span class="italic">'.$this->m_txt_les_pauses.'</span> ');
+      e('</p>');
 
       /* Zones pour afficher les textes des cases */
-      echo '<table class="activite_com">';
+      e('<table class="activite_com">');
 
-      echo '<tr>';
-      echo '<td class="head1" id="HeadEtape'.$this->m_num.'">'.$this->m_txt_etape.'</td><td class="com1" id="ActiviteEtape'.$this->m_num.'">_</td>';
-      echo '<td class="head2">'.$this->m_txt_commentaires.'<br/> &laquo;'.$this->m_txt_etape.'&raquo;</td>';
-      echo '<td class="head2">'.$this->m_txt_commentaires.'<br/> &laquo;'.$this->m_txt_sur_quoi.'&raquo;</td>';
-      echo '<td class="head2">'.$this->m_txt_commentaires.'<br/> &laquo;'.$this->m_txt_methode.'&raquo;</td>';
-      echo '</tr>';
+      e('<tr>');
+      e('<td class="head1" id="HeadEtape'.$this->m_num.'">'.$this->m_txt_etape.'</td><td class="com1" id="ActiviteEtape'.$this->m_num.'">_</td>');
+      e('<td class="head2">'.$this->m_txt_commentaires.'<br/> &laquo;'.$this->m_txt_etape.'&raquo;</td>');
+      e('<td class="head2">'.$this->m_txt_commentaires.'<br/> &laquo;'.$this->m_txt_sur_quoi.'&raquo;</td>');
+      e('<td class="head2">'.$this->m_txt_commentaires.'<br/> &laquo;'.$this->m_txt_methode.'&raquo;</td>');
+      e('</tr>');
 
-      echo '<tr>';
-      echo '<td class="head1">'.$this->m_txt_sur_quoi.' </td><td class="com1" id="ActiviteQuoi'.$this->m_num.'">_</td>';
-      echo '<td class="com2" id="ComEtape'.$this->m_num.'" rowspan="2">H=</td>';
-      echo '<td class="com2" id="ComQuoi'.$this->m_num.'" rowspan="2">H=</td>';
-      echo '<td class="com2" id="ComOutils'.$this->m_num.'" rowspan="2">H=</td>';
-      echo '</tr>';
+      e('<tr>');
+      e('<td class="head1">'.$this->m_txt_sur_quoi.' </td><td class="com1" id="ActiviteQuoi'.$this->m_num.'">_</td>');
+      e('<td class="com2" id="ComEtape'.$this->m_num.'" rowspan="2">H=</td>');
+      e('<td class="com2" id="ComQuoi'.$this->m_num.'" rowspan="2">H=</td>');
+      e('<td class="com2" id="ComOutils'.$this->m_num.'" rowspan="2">H=</td>');
+      e('</tr>');
 
-      echo '<tr>';
-      echo '<td class="head1">'.$this->m_txt_methode.' </td><td class="com1" id="ActiviteOutils'.$this->m_num.'">_</td>';
-      echo '</tr>';
+      e('<tr>');
+      e('<td class="head1">'.$this->m_txt_methode.' </td><td class="com1" id="ActiviteOutils'.$this->m_num.'">_</td>');
+      e('</tr>');
 
-      echo '</table>';
+      e('</table>');
 
       /* Generer le js */
-      echo '<script type="text/javascript">'."\r\n";
-      echo 'var HeadEtape'.$this->m_num.' = document.getElementById(\'HeadEtape'.$this->m_num.'\');'."\r\n";
-      echo 'var ActiviteEtape'.$this->m_num.' = document.getElementById(\'ActiviteEtape'.$this->m_num.'\');'."\r\n";
-      echo 'var ActiviteQuoi'.$this->m_num.' = document.getElementById(\'ActiviteQuoi'.$this->m_num.'\');'."\r\n";
-      echo 'var ActiviteOutils'.$this->m_num.' = document.getElementById(\'ActiviteOutils'.$this->m_num.'\');'."\r\n";
-      echo '</script>'."\r\n";
+      e('<script type="text/javascript">');
+      e('var HeadEtape'.$this->m_num.' = document.getElementById(\'HeadEtape'.$this->m_num.'\');');
+      e('var ActiviteEtape'.$this->m_num.' = document.getElementById(\'ActiviteEtape'.$this->m_num.'\');');
+      e('var ActiviteQuoi'.$this->m_num.' = document.getElementById(\'ActiviteQuoi'.$this->m_num.'\');');
+      e('var ActiviteOutils'.$this->m_num.' = document.getElementById(\'ActiviteOutils'.$this->m_num.'\');');
+      e('</script>');
     }
 
   }
@@ -326,10 +330,10 @@ class Equipe {
     global $ev;
 
     /* Afficher le nom de l'equipe */
-    echo '<h2><a name="'.$this->m_num.'"> </a>'.$this->m_num.' - '.$this->m_nom.'</h2>'."\r\n";
+    e('<h2><a name="'.$this->m_num.'"> </a>'.$this->m_num.' - '.$this->m_nom.'</h2>');
 
     /* Afficher le projet de l'equipe */
-    echo '<p class="bold">'.$this->m_txt_projet_.' '.$this->m_projet.'</p>'."\r\n";
+    e('<p class="bold">'.$this->m_txt_projet_.' '.$this->m_projet.'</p>');
 
     /*-- Afficher le suivi des activites --*/
 
@@ -345,21 +349,20 @@ class Equipe {
 
       /* Afficher les activites par ligne decroissante pour toutes les heures H */
 
-
       //--
-      echo '<div class="plegende"><a class="legende" href="#'.$this->m_num.'">&nbsp; '.$this->m_txt_legende.' &nbsp;<span class="survol">';
+      e('<div class="plegende"><a class="legende" href="#'.$this->m_num.'">&nbsp; '.$this->m_txt_legende.' &nbsp;<span class="survol">');
       $activite = new HeureActivite();
       $activite->afficher_legende();
-      echo '</span></a></div>';
+      e('</span></a></div>');
       //--
 
       $i = $max-1; // la ligne a afficher
-      echo '<table class="activite">'."\r\n";
+      e('<table class="activite">');
       while ($i>=0) {
-        echo '<tr>';
+        e('<tr>');
 
         /* Premiere cellule */
-        echo '<td class="alignR">'.($i+1).'.</td>';
+        e('<td class="alignR">'.($i+1).'.</td>');
 
         for ($h = 0 ; $h < $ev->duree ; $h++) {
           if ($this->m_activites[$h]->get_nbr_activite() > $i) {
@@ -373,29 +376,29 @@ class Equipe {
             $personnes = '';
           }
           
-          echo '<td class="'.$color.'"><a href="#">'.$personnes.'</a></td>';
+          e('<td class="'.$color.'"><a href="#">'.$personnes.'</a></td>');
         }
-        echo '</tr>'."\r\n";
+        e('</tr>');
         $i--;
       }
 
       /* Afficher la ligne des heures H */
-      echo '<tr>';
-      echo '<td> </td>'; // Premiere cellule : vide
+      e('<tr>');
+      e('<td> </td>'); // Premiere cellule : vide
       for ($h = 0 ; $h < $ev->duree ; $h++) {
-        echo '<td class="bold heuresH '.(($this->m_pauses[$h]) ? 'gray' : '').'">'.($h+1).'</td>';
+        e('<td class="bold heuresH '.(($this->m_pauses[$h]) ? 'gray' : '').'">'.($h+1).'</td>');
       }
-      echo '</tr>'."\r\n";
+      e('</tr>');
 
-      echo '</table>';
+      e('</table>');
     }
 
     /* Afficher les heures de maniere exhaustive */
 
-    echo '<br/>';
+    e('<br/>');
 
-    echo '<table class="debrief">';
-    echo '<tr><th class="coin">'.$this->m_num.'</th><th colspan="2">&laquo;'.$this->m_txt_etape.'&raquo;</th><th>&laquo;'.$this->m_txt_sur_quoi.'&raquo;</th><th>&laquo;'.$this->m_txt_methode.'&raquo;</th><th>'.$this->m_txt_nbrpers.'</th></tr>'."\r\n";
+    e('<table class="debrief">');
+    e('<tr><th class="coin">'.$this->m_num.'</th><th colspan="2">&laquo;'.$this->m_txt_etape.'&raquo;</th><th>&laquo;'.$this->m_txt_sur_quoi.'&raquo;</th><th>&laquo;'.$this->m_txt_methode.'&raquo;</th><th>'.$this->m_txt_nbrpers.'</th></tr>');
 
     for ($h = 0 ; $h < $ev->duree ; $h++) {
 
@@ -403,7 +406,7 @@ class Equipe {
       $com_etape = str_replace('\nl', "<br/>", $this->m_activites[$h]->get_com_etape()); 
       $com_quoi = str_replace('\nl', "<br/>", $this->m_activites[$h]->get_com_quoi());
       $com_outils = str_replace('\nl', "<br/>", html_entity_decode($this->m_activites[$h]->get_com_outils()));
-      echo '<tr class="H"><td class="bold center">H = '.($h+1).'</td><td class="italic" colspan="2">'.$com_etape.'</td><td class="italic">'.$com_quoi.'</td><td class="italic">'.$com_outils.'</td><td>-</td></tr>'."\r\n";
+      e('<tr class="H"><td class="bold center">H = '.($h+1).'</td><td class="italic" colspan="2">'.$com_etape.'</td><td class="italic">'.$com_quoi.'</td><td class="italic">'.$com_outils.'</td><td>-</td></tr>');
 
       /* Commentaires des activites */
 
@@ -414,49 +417,49 @@ class Equipe {
         $outils = $this->m_activites[$h]->get_outils($i);
         $personnes = str_replace("'", '\\\'', $this->m_activites[$h]->get_personnes($i));
 
-        echo '<tr><td class="center">'.($i+1).'.</td><td style="background-color:'.$colorEtape.'; width: 15px;"><br/></td><td>'.$etape.'</td><td>'.$quoi.'</td><td>'.$outils.'</td><td>'.$personnes.'</td></tr>'."\r\n";
+        e('<tr><td class="center">'.($i+1).'.</td><td style="background-color:'.$colorEtape.'; width: 15px;"><br/></td><td>'.$etape.'</td><td>'.$quoi.'</td><td>'.$outils.'</td><td>'.$personnes.'</td></tr>');
       }
     }
-    echo '</table>';
+    e('</table>');
   }
 
   public function afficher_formulaire() {
     global $ev;
     global $H;
       
-    echo '<h3>'.$this->m_txt_projet.'</h3>';
+    e('<h3>'.$this->m_txt_projet.'</h3>');
 
     /* Nom de l'equipe */
-    echo '<p><span class="bold">'.$this->m_txt_nom_equipe.'</span> <input class="text" type="text" id="EquipeNom" name="EquipeNom" value="'.html_entity_decode(str_replace('\\\'', "'", $this->m_nom)).'" /></p>';
+    e('<p><span class="bold">'.$this->m_txt_nom_equipe.'</span> <input class="text" type="text" id="EquipeNom" name="EquipeNom" value="'.html_entity_decode(str_replace('\\\'', "'", $this->m_nom)).'" /></p>');
 
     /* Projet de l'equipe */
-    echo '<p><span class="bold">'.$this->m_txt_titre_projet.' </span><input class="text_large" type="text" id="EquipeProjet" name="EquipeProjet" value="'.html_entity_decode(str_replace('\\\'', "'", $this->m_projet)).'" /></p>';
+    e('<p><span class="bold">'.$this->m_txt_titre_projet.' </span><input class="text_large" type="text" id="EquipeProjet" name="EquipeProjet" value="'.html_entity_decode(str_replace('\\\'', "'", $this->m_projet)).'" /></p>');
 
     /* Commentaire de l'equipe */
-    echo '<p>'.$this->m_txt_commentaire.'</p>';
-    echo '<p><textarea class="textarea" id="EquipeCommentaire" name="EquipeCommentaire" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire)).'</textarea></p>';
+    e('<p>'.$this->m_txt_commentaire.'</p>');
+    e('<p><textarea class="textarea" id="EquipeCommentaire" name="EquipeCommentaire" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire)).'</textarea></p>');
 
     /* Lieu de travail de l'equipe */
-    echo '<p><span class="bold">'.$this->m_txt_lieu.' </span></p>';
-    echo '<table>';
-    echo '<tr><td>'.$this->m_txt_etage.'</td><td>'.str_replace('\\\'', "'", $this->m_txt_salle).'</td><td>'.str_replace('\\\'', "'", $this->m_txt_endroit).'</td></tr>';
-    echo '<tr>';
-    echo '<td><select id="EquipeLieu_etage" name="EquipeLieu_etage" />';
-    echo '<option value="0" '.(($this->m_lieu_etage==0)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[0].'</option>';
-    echo '<option value="1" '.(($this->m_lieu_etage==1)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[1].'</option>';
-    echo '<option value="2" '.(($this->m_lieu_etage==2)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[2].'</option>';
-    echo '</select></td>';
-    echo '<td><input class="text_small" type="text" id="EquipeLieu_salle" name="EquipeLieu_salle" value="'.html_entity_decode($this->m_lieu_salle).'" /></td>';
-    echo '<td><input class="text_large" type="text" id="EquipeLieu_endroit" name="EquipeLieu_endroit" value="'.html_entity_decode($this->m_lieu_endroit).'" /></td>';
-    echo '</tr>';
-    echo '</table>';
-    echo '<p class="center"><span class="italic">('.$this->m_txt_lieu_rmq.')</span></p>';
+    e('<p><span class="bold">'.$this->m_txt_lieu.' </span></p>');
+    e('<table>');
+    e('<tr><td>'.$this->m_txt_etage.'</td><td>'.str_replace('\\\'', "'", $this->m_txt_salle).'</td><td>'.str_replace('\\\'', "'", $this->m_txt_endroit).'</td></tr>');
+    e('<tr>');
+    e('<td><select id="EquipeLieu_etage" name="EquipeLieu_etage" />');
+    e('<option value="0" '.(($this->m_lieu_etage==0)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[0].'</option>');
+    e('<option value="1" '.(($this->m_lieu_etage==1)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[1].'</option>');
+    e('<option value="2" '.(($this->m_lieu_etage==2)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[2].'</option>');
+    e('</select></td>');
+    e('<td><input class="text_small" type="text" id="EquipeLieu_salle" name="EquipeLieu_salle" value="'.html_entity_decode($this->m_lieu_salle).'" /></td>');
+    e('<td><input class="text_large" type="text" id="EquipeLieu_endroit" name="EquipeLieu_endroit" value="'.html_entity_decode($this->m_lieu_endroit).'" /></td>');
+    e('</tr>');
+    e('</table>');
+    e('<p class="center"><span class="italic">('.$this->m_txt_lieu_rmq.')</span></p>');
 
-    echo '<h3>'.$this->m_txt_membres.'</h3>';
+    e('<h3>'.$this->m_txt_membres.'</h3>');
 
     /* Membres de l'equipe */
-    echo '<table>';
-    echo '<tr><td> </td><td>'.$this->m_txt_prenom.'</td><td>'.$this->m_txt_nom.'</td><td>'.$this->m_txt_affiliation.'</td></tr>';
+    e('<table>');
+    e('<tr><td> </td><td>'.$this->m_txt_prenom.'</td><td>'.$this->m_txt_nom.'</td><td>'.$this->m_txt_affiliation.'</td></tr>');
     $i = 0;
     foreach ($this->m_membres as $key => $membre) {
       $membre->afficher_formulaire($i);
@@ -466,28 +469,28 @@ class Equipe {
       membre_afficher_formulaire($i);
       $i++;
     }
-    echo '</table>'."\r\n";
+    e('</table>');
 
-    echo '<h3>'.$this->m_txt_processus_creativite.'</h3>';
+    e('<h3>'.$this->m_txt_processus_creativite.'</h3>');
     
     /* Affichage de l'heure */
-    echo '<p>'.heure().'</p>';
+    e('<p>'.heure().'</p>');
 
     /* Pauses */
-    echo '<p class="bold center">'.$this->m_txt_pauses.'</p>';
-    echo '<table class="pauses">';
-    echo '<tr>';
+    e('<p class="bold center">'.$this->m_txt_pauses.'</p>');
+    e('<table class="pauses">');
+    e('<tr>');
     for ($h = 0 ; $h < $ev->duree ; $h++) {
       if ($h % 12 == 0) {
-          echo '</tr><tr>';
+          e('</tr><tr>');
       }
-      echo '<td><label id="lb_pause'.$h.'" for="EQ_pause'.$h.'">'; 
-      echo '<input type="checkbox" id="EQ_pause'.$h.'" name ="EQ_pause['.$h.']" value="1" '.(($this->m_pauses[$h]) ? 'checked="checked"' : '').' /><br/>';
+      e('<td><label id="lb_pause'.$h.'" for="EQ_pause'.$h.'">'); 
+      e('<input type="checkbox" id="EQ_pause'.$h.'" name ="EQ_pause['.$h.']" value="1" '.(($this->m_pauses[$h]) ? 'checked="checked"' : '').' /><br/>');
       chrono_afficher_alpha($h+1);
-      echo '</label></td>';
+      e('</label></td>');
     }
-    echo '</tr>';
-    echo '</table>';
+    e('</tr>');
+    e('</table>');
 
     /* Suivi des activites */
     $h = $H-1;
@@ -495,17 +498,17 @@ class Equipe {
       if ($H < $ev->duree) {
         chrono_afficher($H, 'rouge');
         $this->m_activites[$h]->afficher_formulaire($h, 'rouge');
-        echo '<p><input type="hidden" name="h" value="'.$h.'" /></p>'."\r\n";
+        e('<p><input type="hidden" name="h" value="'.$h.'" /></p>');
       }
       if ($H > 1) {
         chrono_afficher($H-1, 'gris');
         $this->m_activites[$h-1]->afficher_formulaire($h-1, 'gris');
-        echo '<p><input type="hidden" name="h_1" value="'.($h-1).'" /></p>'."\r\n";
+        e('<p><input type="hidden" name="h_1" value="'.($h-1).'" /></p>');
       }
       if ($H > 2) {
         chrono_afficher($H-2, 'gris');
         $this->m_activites[$h-2]->afficher_formulaire($h-2, 'gris');
-        echo '<p><input type="hidden" name="h_2" value="'.($h-2).'" /></p>'."\r\n";
+        e('<p><input type="hidden" name="h_2" value="'.($h-2).'" /></p>');
       }
     }
   }
@@ -526,19 +529,19 @@ class Equipe {
     }
 
     /* Nom de l'equipe */
-    fputs($desc, 'NOM>'.$this->m_nom.'>'."\r\n");
+    fputs($desc, 'NOM>'.$this->m_nom.'>');
 
     /* Projet de l'equipe */
-    fputs($desc, 'PROJET>'.$this->m_projet.'>'."\r\n");
+    fputs($desc, 'PROJET>'.$this->m_projet.'>');
 
     /* Commentaire de l'equipe */
-    fputs($desc, 'COMMENTAIRE>'.$this->m_commentaire.'>'."\r\n");
+    fputs($desc, 'COMMENTAIRE>'.$this->m_commentaire.'>');
 
     /* Lieu de travail de l'equipe */
-    fputs($desc, 'LIEU>'.$this->m_lieu_etage.'>'.$this->m_lieu_salle.'>'.$this->m_lieu_endroit.'>'."\r\n");
+    fputs($desc, 'LIEU>'.$this->m_lieu_etage.'>'.$this->m_lieu_salle.'>'.$this->m_lieu_endroit.'>');
 
     /* Nombre de membres */
-    fputs($desc, 'NOMBRE>'.count($this->m_membres).'>'."\r\n");
+    fputs($desc, 'NOMBRE>'.count($this->m_membres).'>');
 
     /* Membres de l'equipe */
     foreach ($this->m_membres as $key => $membre)
@@ -605,7 +608,7 @@ class Equipe {
       /* Pauses */
       $tab = explode(">", fgets($desc)); // Lire une ligne et la decomposer dans un tableau
       for ($i = 0 ; $i < $ev->duree ; $i++){
-        $this->m_pauses[$i] = (!isset($tab[$i])) ? false : ($tab[$i] == '1' ? true : false); 
+        $this->m_pauses[$i] = (!isset($tab[$i])) ? false : ($tab[$i] == '1'); 
       }
       
       /* Suivi des activites */

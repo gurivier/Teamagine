@@ -1,4 +1,5 @@
-!<?php
+<?php
+function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 

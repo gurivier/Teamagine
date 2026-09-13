@@ -1,18 +1,18 @@
 <?php
 
-echo '<h2>'.$h2_concept.'</h2>';
+e('<h2>'.$h2_concept.'</h2>');
 
-echo '<p>'.$lipsum.'</p>';
+e('<p>'.$lipsum.'</p>');
 
-echo '<h2>'.$h2_organisation.'</h2>';
+e('<h2>'.$h2_organisation.'</h2>');
 
-echo '<p>'.$lipsum.'</p>';
+e('<p>'.$lipsum.'</p>');
 
-echo '<h2>'.$h2_sponsors.'</h2>';
+e('<h2>'.$h2_sponsors.'</h2>');
 
-echo '<p>'.$lipsum.'</p>';
+e('<p>'.$lipsum.'</p>');
 
-echo '<h2>'.$h2_inscription.'</h2>';
+e('<h2>'.$h2_inscription.'</h2>');
 
 $inscriptions_objet=array('fr'=>'[INSCRIPTION CC2026E1] NOM Prénom', 'en'=>'[INSCRIPTION CC2026E1] SURNAME Firstname');
 $inscriptions_corps=array('fr'=>'Affiliation, Droit à l\'image, Charte de comportement, Régime alimentaire', 'en'=>'Affiliation, Image rights, Code of conduct, Food');
@@ -22,11 +22,11 @@ $corps=urlencode($inscriptions_corps[$lang]);
 
 $mailto='mailto:'.$ev->contact.'?subject='.$objet.'&amp;body='.$corps;
 
-echo '<p>'.$txt_contact.' <a href="'.$mailto.'">'.$ev->contact.'</a></p>';
+e('<p>'.$txt_contact.' <a href="'.$mailto.'">'.$ev->contact.'</a></p>');
 
-echo '<h2>'.$h2_localisation.'</h2>';
+e('<h2>'.$h2_localisation.'</h2>');
 
-echo '<p>'.$lipsum.'</p>';
+e('<p>'.$lipsum.'</p>');
 
 ?>
  

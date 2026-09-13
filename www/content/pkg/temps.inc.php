@@ -57,9 +57,9 @@ function heure_H() {
 
 function chrono_afficher_alpha($h) {
 
-  echo '<span class="bold">'.$h.'</span><br/>';
+  e('<span class="bold">'.$h.'</span><br/>');
   heure_intervalle_courant($h, $debut, $fin);
-  echo $debut.'<br/>'.$fin;
+  e($debut.'<br/>'.$fin);
 
 }
 
@@ -70,19 +70,19 @@ function chrono_afficher($h, $avec_couleur) {
   
   $nombre = $h; // Le nombre a decomposer
 
-  echo '<div class="chrono">';
+  e('<div class="chrono">');
 
   /* Debut de l'affichage */
-  echo '<img src="content/img/chrono2026/'.$couleur.'/bordG.png" alt="[" />';
-  echo '<img src="content/img/chrono2026/'.$couleur.'/H.png" alt="H" />';
-  echo '<img src="content/img/chrono2026/'.$couleur.'/egal.png" alt="=" />';
+  e('<img src="content/img/chrono2026/'.$couleur.'/bordG.png" alt="[" />');
+  e('<img src="content/img/chrono2026/'.$couleur.'/H.png" alt="H" />');
+  e('<img src="content/img/chrono2026/'.$couleur.'/egal.png" alt="=" />');
 
   /* Si le nombre est negatif,
    * afficher un moins,
    * puis afficher la partie absolue.
    */
   if ($nombre < 0) {
-    echo '<img src="content/img/chrono2026/'.$couleur.'/moins.png" alt="-" />';
+    e('<img src="content/img/chrono2026/'.$couleur.'/moins.png" alt="-" />');
     $nombre = $nombre * -1;
   }
 
@@ -94,18 +94,19 @@ function chrono_afficher($h, $avec_couleur) {
   }
 
   /* Affichage du nombre */
-  for ($i = count($tab)-1 ; $i >= 0  ; $i--)
-    echo '<img src="content/img/chrono2026/'.$couleur.'/'.$tab[$i].'.png" alt="'.$tab[$i].'" />';
-  
-  /* Fin de l'affichage */
-  echo '<img src="content/img/chrono2026/'.$couleur.'/bordD.png" alt="]" />'."\r\n";
-
-  if ($h >= -3 && $h <= $ev->duree + 1) {
-      heure_intervalle_courant($h, $debut, $fin);
-      echo '<div class="center bold '.$couleur.'">'.date('M. d').' | '.$debut.'&nbsp; &gt; &nbsp;'.$fin.'</div>';
+  for ($i = count($tab)-1 ; $i >= 0  ; $i--) {
+    e('<img src="content/img/chrono2026/'.$couleur.'/'.$tab[$i].'.png" alt="'.$tab[$i].'" />');
   }
   
-  echo '</div>';
+  /* Fin de l'affichage */
+  e('<img src="content/img/chrono2026/'.$couleur.'/bordD.png" alt="]" />');
+
+  if ($h >= -3 && $h <= $ev->duree + 1) {
+    heure_intervalle_courant($h, $debut, $fin);
+    e('<div class="center bold '.$couleur.'">'.date('M. d').' | '.$debut.'&nbsp; &gt; &nbsp;'.$fin.'</div>');
+  }
+  
+  e('</div>');
 }
 
 //== Globals

@@ -2,17 +2,17 @@
 
 include_once('pkg/verif.inc.php');
 
-echo "<!-- DEBUT SUIVI -->\r\n";
+e('<!-- DEBUT SUIVI -->');
 
 /*=== Informations diverses (Heure, Legende...) ===*/
 
-echo '<div class="fluxL">';
+e('<div class="fluxL">');
 
-echo '<p class="bold">'.$titre_corps_01.'<br/>'.$titre_corps_02.'<br/><br/></p>';
+e('<p class="bold">'.$titre_corps_01.'<br/>'.$titre_corps_02.'<br/><br/></p>');
 
 include_once('pkg/temps.inc.php'); // $H
 
-echo '<p>'.heure().'</p>';
+e('<p>'.heure().'</p>');
 
 chrono_afficher($H, ($H > 0 && $H < $ev->duree));
 
@@ -20,19 +20,19 @@ include_once('class/HeureActivite.class.php');
 
 if ($H >= 0 && $H <= $ev->duree + 1) {
   /* Afficher la legende */
-  echo '<div class="tlegende">';
+  e('<div class="tlegende">');
   $activite = new HeureActivite();
   $activite->afficher_legende();
-  echo '</div>';
+  e('</div>');
 }
 else {
   /* Afficher le a-propos */
-  echo '<p class="apropos"><span class="bold">'.$txt_apropos.'</span><br/>';
-  echo $txt_apropos_conception.' Olivier Z&eacute;phir '.$txt_apropos_et.' Olivier Pialot<br/>';
-  echo $txt_apropos_devel.' Guillaume Rivi&egrave;re</p>';
+  e('<p class="apropos"><span class="bold">'.$txt_apropos.'</span><br/>');
+  e($txt_apropos_conception.' Olivier Z&eacute;phir '.$txt_apropos_et.' Olivier Pialot<br/>');
+  e($txt_apropos_devel.' Guillaume Rivi&egrave;re</p>');
 }
 
-echo '</div>';
+e('</div>');
 
 /*=== Menu lateral avec les noms des équipes ===*/
 
@@ -49,13 +49,13 @@ $dirname = 'data/equipes/';
 /* Ouverture du repertoire */
 
 // if (!$dir = opendir($dirname)) {
-//   echo "Erreur ouverture r&eacute;pertoire fiches";
+//   e('Erreur ouverture r&eacute;pertoire fiches);
 // }
 
 $tab_dir = scandir($dirname); // PHP 5, PHP 7, PHP 8
 $tab_equipes = array();
 
-echo '<ul class="equipes">'."\r\n";
+e('<ul class="equipes">');
 
 /* Parcours du repertoire */
 $j=0;
@@ -91,11 +91,11 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
       }
   
       /* Afficher le raccourcis */
-      echo '<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', $nom_equipe_ascii_short).'</a></li>'."\r\n";
+      e('<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', $nom_equipe_ascii_short).'</a></li>');
   
       $j++;
       if ($j % 9 == 0) {
-        echo '</ul><ul class="equipes">'."\r\n";
+        e('</ul><ul class="equipes">');
       }
     }
   }
@@ -108,7 +108,7 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
 //   if (is_file($dirname.$f)) {
 // 
 //     if ($i % 19 == 0) {
-//       echo '</ul><ul class="equipes">'."\r\n";
+//       e('</ul><ul class="equipes">');
 //     }
 //     $i++;
 //  
@@ -120,28 +120,28 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
 //     array_push($tab_equipes, $equipe);
 // 
 //     /* Afficher le raccourcis */
-//     echo '<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', substr(str_replace('\\\'', "'", $equipe->get_nom()), 0, 22)).'</a></li>'."\r\n";
+//     e('<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', substr(str_replace('\\\'', "'", $equipe->get_nom()), 0, 22)).'</a></li>');
 //   }
 // }
 
-echo '</ul>'."\r\n";
+e('</ul>');
 
 /* Fermeture du repertoire */
 //closedir($dir);
 
 if ($H > 0 && $H <= $ev->duree) {
-  echo '<p class="fluxR"><a href="equipe_activer.php?lang='.$lang.'">'.$txt_activer_fiche.'&nbsp;&nbsp;</p>'."\r\n";
+  e('<p class="fluxR"><a href="equipe_activer.php?lang='.$lang.'">'.$txt_activer_fiche.'&nbsp;&nbsp;</p>');
 }
 
-echo '<br class="flux" />';
+e('<br class="flux" />');
 
 /*=== Activites des equipes ===*/
 
 /* Afficher les equipes */
 foreach ($tab_equipes as $key => $equipe) {
-    $equipe->afficher();
+  $equipe->afficher();
 }
 
-echo "<!-- FIN SUIVI -->\r\n";
+e('<!-- FIN SUIVI -->');
 
 ?>

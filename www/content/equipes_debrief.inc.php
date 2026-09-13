@@ -1,6 +1,6 @@
 <?php
 
-echo "<!-- DEBUT DEBRIEF -->\r\n";
+e('<!-- DEBUT DEBRIEF -->');
 
 include_once('class/Equipe.class.php');
 
@@ -17,7 +17,7 @@ $dir = opendir($dirname);
 
 $tab_equipes = array();
 
-echo '<ul class="equipes">'."\r\n";
+e('<ul class="equipes">');
 
 /* Parcours du repertoire */
 $i = 1;
@@ -25,7 +25,7 @@ while ($f = readdir($dir)) {
   if (is_file($dirname.$f)) {
 
     if ($i % 9 == 0) {
-      echo '</ul><ul class="equipes">'."\r\n";
+      e('</ul><ul class="equipes">');
     }
     $i++;
  
@@ -37,23 +37,22 @@ while ($f = readdir($dir)) {
     array_push($tab_equipes, $equipe);
 
     /* Afficher le raccourcis */
-    echo '<li><a href="#'.$num.'">'.$num.'-'.str_replace(' ', '&nbsp;', $equipe->get_nom()).'</a></li>'."\r\n";
+    e('<li><a href="#'.$num.'">'.$num.'-'.str_replace(' ', '&nbsp;', $equipe->get_nom()).'</a></li>');
   }
 }
 
-echo '</ul>'."\r\n";
+e('</ul>');
 
 /* Fermeture du repertoire */
 closedir($dir);
 
-
-echo '<br class="flux" />';
+e('<br class="flux" />');
 
 /* Afficher les equipes */
 foreach ($tab_equipes as $key=>$equipe) {
-    $equipe->afficher_debrief();
+  $equipe->afficher_debrief();
 }
 
-echo "<!-- FIN DEBRIEF -->\r\n";
+e('<!-- FIN DEBRIEF -->');
 
 ?>

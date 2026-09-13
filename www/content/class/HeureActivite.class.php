@@ -112,7 +112,7 @@ class HeureActivite {
   }
 
   public function ajouter_activite($etape, $quoi, $outils, $nombre) {
-
+    
     array_push($this->m_activite_etape, $etape);
     array_push($this->m_activite_quoi, $quoi);
     array_push($this->m_activite_outils, $outils);
@@ -120,45 +120,45 @@ class HeureActivite {
   }
 
   public function afficher_legende() {
-    echo '<table class="activite">'."\r\n";
-    echo '<tr><th> </th><th>'.$this->m_txt_etape.'</th></tr>'."\r\n";
+    e('<table class="activite">');
+    e('<tr><th> </th><th>'.$this->m_txt_etape.'</th></tr>');
     
     /* Groupes d'options (Un seul groupe ETAPE a l'heure actuelle) */
     foreach (HeureActivite::$G_OPTGROUP_ETAPE[1] as $key => $val) {
-      echo '<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende"><span class="italic">'.HeureActivite::$G_OPTGROUP_ETAPE[0].'</span> : '.HeureActivite::$G_ETAPE[$val].'</td></tr>'."\r\n";
+      e('<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende"><span class="italic">'.HeureActivite::$G_OPTGROUP_ETAPE[0].'</span> : '.HeureActivite::$G_ETAPE[$val].'</td></tr>');
     }
 
     /* Options */
     foreach (HeureActivite::$G_OPTIONS_ETAPE as $key => $val) {
-      echo '<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende">'.HeureActivite::$G_ETAPE[$val].'</td></tr>'."\r\n";
+      e('<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende">'.HeureActivite::$G_ETAPE[$val].'</td></tr>');
     }
 
     /* Autre */
-    echo '<tr><td class="'.$this->get_color_etape('aut', false).'"> </td><td class="legende"><span class="italic">'.HeureActivite::$G_ETAPE['aut'].'</span></td></tr>'."\r\n";
+    e('<tr><td class="'.$this->get_color_etape('aut', false).'"> </td><td class="legende"><span class="italic">'.HeureActivite::$G_ETAPE['aut'].'</span></td></tr>');
 
     /* Nombre de personnne*/
-    echo '<tr><td class="legendenpers">N</td><th class="legende">'.HeureActivite::$G_txt['personnes'].'</th></tr>'."\r\n";
+    e('<tr><td class="legendenpers">N</td><th class="legende">'.HeureActivite::$G_txt['personnes'].'</th></tr>');
 
-    echo '</table>'."\r\n";
+    e('</table>');
   }
 
   public function afficher_formulaire($h, $couleur) {
 
-    echo '<table class="form_activite">'."\r\n";
-    echo '<tr><td> </td>';
-    echo '<th>'.HeureActivite::$G_txt['etape'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>';
-    echo '<th>'.HeureActivite::$G_txt['personnes'].'</th>';
-    echo '<th>'.HeureActivite::$G_txt['quoi'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>';
-    echo '<th>'.HeureActivite::$G_txt['outils'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>';
-    echo '</tr>'."\r\n";
+    e('<table class="form_activite">');
+    e('<tr><td> </td>');
+    e('<th>'.HeureActivite::$G_txt['etape'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>');
+    e('<th>'.HeureActivite::$G_txt['personnes'].'</th>');
+    e('<th>'.HeureActivite::$G_txt['quoi'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>');
+    e('<th>'.HeureActivite::$G_txt['outils'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>');
+    e('</tr>');
 
     /* Les options */
 
     for ($i = 0 ; $i < HeureActivite::$G_NBR_MAX ; $i++) {
-      echo '<tr class="bg_'.$couleur.'">';
+      e('<tr class="bg_'.$couleur.'">');
 
       /* Premiere cellule */
-      echo '<td class="alignR">'.($i+1).'.</td>';
+      e('<td class="alignR">'.($i+1).'.</td>');
 
       if ($i < count($this->m_activite_etape)) {
         $this->afficher_formulaire_activite($h, $i,
@@ -176,7 +176,7 @@ class HeureActivite {
       else {
         $nbr_personnes='';
       }
-      echo '<td><input class="text_verysmall" type="text" id="EQ_personnes'.$h.'_'.$i.'" name="EQ_personnes['.$h.']['.$i.']" value="'.$nbr_personnes.'" /></td>';
+      e('<td><input class="text_verysmall" type="text" id="EQ_personnes'.$h.'_'.$i.'" name="EQ_personnes['.$h.']['.$i.']" value="'.$nbr_personnes.'" /></td>');
 
 
       if ($i < count($this->m_activite_quoi)) {
@@ -199,34 +199,34 @@ class HeureActivite {
                                              'outils', HeureActivite::$G_OUTILS, HeureActivite::$G_OPTIONS_OUTILS, HeureActivite::$G_OPTGROUP_OUTILS);
       }
       
-      echo '</tr>'."\r\n";
+      e('</tr>');
     }
 
     /* Les commentaires */
 
-    echo '<tr>';
-    echo '<td> </td>';
-    echo '<td colspan="3"><textarea class="textarea" id="EQ_etape_com'.$h.'" name="EQ_etape_com'.$h.'" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire_etape)).'</textarea></td>';
-    echo '<td colspan="2"><textarea class="textarea" id="EQ_quoi_com'.$h.'" name="EQ_quoi_com'.$h.'" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire_quoi)).'</textarea></td>';
-    echo '<td colspan="2"><textarea class="textarea" id="EQ_outils_com'.$h.'" name="EQ_outils_com'.$h.'" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire_outils)).'</textarea></td>';
-    echo '</tr>'."\r\n";  
+    e('<tr>');
+    e('<td> </td>');
+    e('<td colspan="3"><textarea class="textarea" id="EQ_etape_com'.$h.'" name="EQ_etape_com'.$h.'" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire_etape)).'</textarea></td>');
+    e('<td colspan="2"><textarea class="textarea" id="EQ_quoi_com'.$h.'" name="EQ_quoi_com'.$h.'" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire_quoi)).'</textarea></td>');
+    e('<td colspan="2"><textarea class="textarea" id="EQ_outils_com'.$h.'" name="EQ_outils_com'.$h.'" cols="20" rows="4">'.str_replace('\nl', "\r\n", html_entity_decode($this->m_commentaire_outils)).'</textarea></td>');
+    e('</tr>');  
 
-    echo '<tr>';
-    echo '<td> </td>';
-    echo '<th colspan="3">'.HeureActivite::$G_txt['com'].'</th>';
-    echo '<th colspan="2">'.HeureActivite::$G_txt['com'].'</th>';
-    echo '<th colspan="2">'.HeureActivite::$G_txt['com'].'</th>';
-    echo '</tr>'."\r\n";  
+    e('<tr>');
+    e('<td> </td>');
+    e('<th colspan="3">'.HeureActivite::$G_txt['com'].'</th>');
+    e('<th colspan="2">'.HeureActivite::$G_txt['com'].'</th>');
+    e('<th colspan="2">'.HeureActivite::$G_txt['com'].'</th>');
+    e('</tr>');  
 
-    echo '</table>'."\r\n";
+    e('</table>');
 
-    echo '<p class="italic">(<span class="bold">'.HeureActivite::$G_txt['personnes'].'</span> = '.HeureActivite::$G_txt['rmq_nbr_pers'].'.)</p>';
+    e('<p class="italic">(<span class="bold">'.HeureActivite::$G_txt['personnes'].'</span> = '.HeureActivite::$G_txt['rmq_nbr_pers'].'.)</p>');
   }
 
   protected function afficher_formulaire_activite($h, $i, $label, &$OPTION_NAME, &$options, &$optgroup, $type = '') {
 
     /* Debut du champ select */
-    echo '<td><select id="EQ_'.$label.'_'.$h.'_'.$i.'" name="EQ_'.$label.'['.$h.']['.$i.']" onchange="document.getElementById(\'EQ_'.$label.'Autre'.$h.'_'.$i.'\').disabled=(this.options[this.selectedIndex].value != \'aut\'); ">';
+      e('<td><select id="EQ_'.$label.'_'.$h.'_'.$i.'" name="EQ_'.$label.'['.$h.']['.$i.']" onchange="document.getElementById(\'EQ_'.$label.'Autre'.$h.'_'.$i.'\').disabled=(this.options[this.selectedIndex].value != \'aut\'); ">');
 
     $autre = $this->afficher_formulaire_option($h, $i, $OPTION_NAME, $options, html_entity_decode($type));
 
@@ -237,17 +237,17 @@ class HeureActivite {
     
     /* La valeur Autre */
 
-    echo '<optgroup label="Autres">';
+    e('<optgroup label="Autres">');
     if ($autre) {
-      echo '<option value="aut" selected="selected">'.$OPTION_NAME['aut'].'</option>';
+        e('<option value="aut" selected="selected">'.$OPTION_NAME['aut'].'</option>');
     }
     else {
-      echo '<option value="aut">'.$OPTION_NAME['aut'].'</option>';
+        e('<option value="aut">'.$OPTION_NAME['aut'].'</option>');
     }
-    echo '</optgroup>';
+    e('</optgroup>');
 
     /* Fin du champ select */
-    echo '</select></td>'."\r\n";
+    e('</select></td>');
 
     /* Champ texte pour specifier dans le cas Autre */
     if ($autre) {
@@ -258,9 +258,7 @@ class HeureActivite {
       $autre_val = '';
       $disabled = 'disabled="disabled"';
     }
-    echo '<td><input class="text" type="text" id="EQ_'.$label.'Autre'.$h.'_'.$i.'" name="EQ_'.$label.'Autre['.$h.']['.$i.']" value="'.$autre_val.'" '.$disabled.' /></td>';
-
-    echo "\r\n";  
+    e('<td><input class="text" type="text" id="EQ_'.$label.'Autre'.$h.'_'.$i.'" name="EQ_'.$label.'Autre['.$h.']['.$i.']" value="'.$autre_val.'" '.$disabled.' /></td>');
   }
 
   protected function afficher_formulaire_option($h, $i, &$OPTION_NAME, &$options, $type) {
@@ -271,20 +269,21 @@ class HeureActivite {
     /* La valeur Vide */
     if ($type == '') {
       $autre = false;
-      echo '<option value="" selected="selected"> </option>';
+      e('<option value="" selected="selected"> </option>');
     }
     else {
-      echo '<option value=""> </option>';
+      e('<option value=""> </option>');
     }
 
     /* Les options */
     foreach ($options as $n => $option) {
       if ($type == $option) {
         $autre = false;
-        echo '<option value="'.$option.'" selected="selected">'.$OPTION_NAME[$option].'</option>';
+        e('<option value="'.$option.'" selected="selected">'.$OPTION_NAME[$option].'</option>');
       }
-      else
-        echo '<option value="'.$option.'">'.$OPTION_NAME[$option].'</option>';
+      else {
+        e('<option value="'.$option.'">'.$OPTION_NAME[$option].'</option>');
+      }
     }
     
     return $autre;
@@ -295,19 +294,20 @@ class HeureActivite {
     /* Liste de choix pour le type */
     $autre = true;
 
-    echo '<optgroup label="'.$optgroup[0].'">';
+    e('<optgroup label="'.$optgroup[0].'">');
 
     /* Les options des groupes */
     foreach ($optgroup[1] as $n => $option) {
       if ($type == $option) {
         $autre = false;
-        echo '<option value="'.$option.'" selected="selected">'.$OPTION_NAME[$option].'</option>';
+        e('<option value="'.$option.'" selected="selected">'.$OPTION_NAME[$option].'</option>');
       }
-      else
-        echo '<option value="'.$option.'">'.$OPTION_NAME[$option].'</option>';
+      else {
+        e('<option value="'.$option.'">'.$OPTION_NAME[$option].'</option>');
+      }
     }
 
-    echo '</optgroup>';
+    e('</optgroup>');
 
     return $autre;
   }

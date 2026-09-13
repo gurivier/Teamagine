@@ -1,4 +1,4 @@
-!<?php
+<?php
 
 $titre_page='Enregistrer &eacute;quipe';
 

@@ -3,7 +3,7 @@ $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ?
 include('page/lang/'.$lang.'/'.$lang.'_menu.inc.php');
 include_once('content/pkg/temps.inc.php'); // $H
 
-echo '<!-- '.heure().' | '.$H.' -->';
+e('<!-- '.heure().' | '.$H.' -->');
 
 /*=== Ouvrir fichiers config ===*/
 
@@ -13,29 +13,29 @@ fclose($desc);
 
 /*===*/
 
-echo '<div id="menu">';
+e('<div id="menu">');
 
-echo '<img id="logoevt" src="page/img/logo-'.$ev->couleur.'.png" alt="Logo '.$ev->nom[$lang].'" />';
+e('<img id="logoevt" src="page/img/logo-'.$ev->couleur.'.png" alt="Logo '.$ev->nom[$lang].'" />');
 
-echo '<ul>';
+e('<ul>');
 
 $class = ($selection=='informations') ? 'class="selected" ' : '';
-echo '<li><a '.$class.'href="index.php?lang='.$lang.'">'.$menu_1.'</a></li>';
+e('<li><a '.$class.'href="index.php?lang='.$lang.'">'.$menu_1.'</a></li>');
 
 $class = ($selection=='reglement') ? 'class="selected" ' : '';
-echo '<li><a '.$class.' href="reglement.php?lang='.$lang.'">'.$menu_4.'</a></li>';
+e('<li><a '.$class.' href="reglement.php?lang='.$lang.'">'.$menu_4.'</a></li>');
 
 if ($H>-6) {
   $class = ($selection=='equipes') ? 'class="selected" ' : '';
-  echo '<li><a '.$class.' href="equipes.php?lang='.$lang.'">'.$menu_9.'</a></li>';
+  e('<li><a '.$class.' href="equipes.php?lang='.$lang.'">'.$menu_9.'</a></li>');
 }
 
 if ($prix=='open') {
   $class = ($selection=='palmares') ? 'class="selected" ' : '';
-  echo '<li><a '.$class.' href="palmares.php?lang='.$lang.'">'.$menu_12.'</a></li>';
+  e('<li><a '.$class.' href="palmares.php?lang='.$lang.'">'.$menu_12.'</a></li>');
 }
 
-echo '</ul>';
+e('</ul>');
 
-echo '</div>';
+e('</div>');
 ?>

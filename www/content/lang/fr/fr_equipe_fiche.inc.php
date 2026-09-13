@@ -1,4 +1,4 @@
-!<?php
+<?php
 
 $titre_page='Fiche &eacute;quipe';
 

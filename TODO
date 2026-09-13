@@ -7,3 +7,13 @@
     => https://club.greenit.fr/doc/2022-06-GREENIT-Referentiel_maturite-v3.pdf
     => https://club.greenit.fr/doc/2022-05-19-ClubGreenIT-RGIT-checklist.v3.0.pdf.pdf
     => https://www.greenit.fr/2022/05/11/mise-a-jour-majeure-du-referentiel-ecoconception-web-les-115-bonnes-pratiques/
+
+
+[ ] Entreposage des données : base de données MariaDB/MySQL ou Postgres
+
+[ ] Page d'administration
+
+[x] Un choix de couleurs de thème
+
+[ ] Documentation
+

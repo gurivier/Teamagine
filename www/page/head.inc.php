@@ -1,5 +1,5 @@
 <?php
-echo '<?xml version="1.0" encoding="iso-8859-1"?>'."\r\n";
+e('<?xml version="1.0" encoding="iso-8859-1"?>');
 $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
 include('page/lang/'.$lang.'/'.$lang.'_page.inc.php');
 
@@ -15,33 +15,33 @@ $page_debrief = isset($page_debrief) && $page_debrief;
  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=ISO-8859-1" />
 <?php
 
-echo '<link rel="icon" type="image/png" href="page/img/ico_32x32-'.$ev->couleur.'.png" />'."\r\n";
+e('<link rel="icon" type="image/png" href="page/img/ico_32x32-'.$ev->couleur.'.png" />');
 
-echo '<link href="page/style/skin.css?v=131010" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+e('<link href="page/style/skin.css?v=131010" rel="stylesheet" type="text/css" media="screen" title="screen1" />');
 
 if ($ev->couleur != 'rouge'){
-  echo '<link href="page/style/skin-'.$ev->couleur.'.css?v=120926" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+  e('<link href="page/style/skin-'.$ev->couleur.'.css?v=120926" rel="stylesheet" type="text/css" media="screen" title="screen1" />');
 }
 
 if ($msie=preg_match("/msie/", strtolower(getenv('HTTP_USER_AGENT')))) {
-  echo '<link href="page/style/msie.css?v=170910" rel="stylesheet" type="text/css" media="screen" title="screen1" />'."\r\n";
+  e('<link href="page/style/msie.css?v=170910" rel="stylesheet" type="text/css" media="screen" title="screen1" />');
 }
 
-echo '<link href="page/style/print.css" rel="stylesheet" type="text/css" media="print" />'."\r\n";
+e('<link href="page/style/print.css" rel="stylesheet" type="text/css" media="print" />');
 
 if ($page_equipes) {
- echo '<link href="page/style/equipes.css?v3" rel="stylesheet" type="text/css" title="screen1" />';
+ e('<link href="page/style/equipes.css?v3" rel="stylesheet" type="text/css" title="screen1" />');
  if ($ev->couleur != 'rouge'){
-  echo '<link href="page/style/equipes-'.$ev->couleur.'.css?v3" rel="stylesheet" type="text/css" title="screen1" />';
+  e('<link href="page/style/equipes-'.$ev->couleur.'.css?v3" rel="stylesheet" type="text/css" title="screen1" />');
  }
 }
 
 if ($page_debrief) {
- echo '<link href="page/style/equipes.css" rel="stylesheet" type="text/css" title="screen1" />';
- echo '<link href="page/style/debrief.css" rel="stylesheet" type="text/css" title="screen1" />';
+ e('<link href="page/style/equipes.css" rel="stylesheet" type="text/css" title="screen1" />');
+ e('<link href="page/style/debrief.css" rel="stylesheet" type="text/css" title="screen1" />');
 }
 
-echo '<title>'.$titre_page.'</title>';
+e('<title>'.$titre_page.'</title>');
 ?>
 
 <script type="text/javascript">
@@ -62,14 +62,14 @@ window.onload=open_ext_link;
 <?php
 
 //-- Resize
-echo '<script type="text/javascript" src="page/script/resize_menu.js?v=20101027"></script>';
+e('<script type="text/javascript" src="page/script/resize_menu.js?v=20101027"></script>');
 
 if ($page_concept) {
-  echo '<script type="text/javascript" src="page/script/resize_sponsors.js?v=20101027"></script>';
+ e('<script type="text/javascript" src="page/script/resize_sponsors.js?v=20101027"></script>');
 }
 
 if ($page_saisons) {
- echo '<script type="text/javascript" src="page/script/unhide.js"></script>';
+ e('<script type="text/javascript" src="page/script/unhide.js"></script>');
 }
 
 ?>

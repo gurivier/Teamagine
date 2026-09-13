@@ -13,9 +13,9 @@ class Membre {
   //-- METHODES
 
   public function afficher() {
-    echo str_replace('\\\'', "'", $this->m_prenom).' '.str_replace('\\\'', "'", $this->m_nom);
+    e(str_replace('\\\'', "'", $this->m_prenom).' '.str_replace('\\\'', "'", $this->m_nom));
     if ($this->m_affiliation != '') {
-      echo ' <span class="italic">('.str_replace('\\\'', "'", $this->m_affiliation).')</span> ';
+      e(' <span class="italic">('.str_replace('\\\'', "'", $this->m_affiliation).')</span> ');
     }
   }
 
@@ -44,12 +44,12 @@ class Membre {
 //-- FONCTIONS amies
 
 function membre_afficher_formulaire($i, $nom = '', $prenom = '', $affiliation = '') {
-  echo '<tr>';
-  echo '<td class="alignR">'.($i+1).'.</td>';
-  echo '<td><input class="text_medium" type="text" id="EquipeMembre'.$i.'_prenom" name="EquipeMembre_prenom['.$i.']" value="'.html_entity_decode($prenom).'" /></td>';
-  echo '<td><input class="text_medium" type="text" id="EquipeMembre'.$i.'_nom" name="EquipeMembre_nom['.$i.']" value="'.html_entity_decode($nom).'" /></td>';
-  echo '<td><input class="text_medium" type="text" id="EquipeMembre'.$i.'_affiliation" name="EquipeMembre_affiliation['.$i.']" value="'.html_entity_decode($affiliation).'" /></td>';
-  echo '</tr>';
+  e('<tr>');
+  e('<td class="alignR">'.($i+1).'.</td>');
+  e('<td><input class="text_medium" type="text" id="EquipeMembre'.$i.'_prenom" name="EquipeMembre_prenom['.$i.']" value="'.html_entity_decode($prenom).'" /></td>');
+  e('<td><input class="text_medium" type="text" id="EquipeMembre'.$i.'_nom" name="EquipeMembre_nom['.$i.']" value="'.html_entity_decode($nom).'" /></td>');
+  e('<td><input class="text_medium" type="text" id="EquipeMembre'.$i.'_affiliation" name="EquipeMembre_affiliation['.$i.']" value="'.html_entity_decode($affiliation).'" /></td>');
+  e('</tr>');
 }
 
 

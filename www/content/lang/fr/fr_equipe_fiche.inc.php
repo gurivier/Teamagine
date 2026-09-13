@@ -1,6 +1,6 @@
-<?php
+!<?php
 
-$page_title='Fiche &eacute;quipe';
+$titre_page='Fiche &eacute;quipe';
 
 $txt_avert_save='N\'oubliez pas de sauvegarder !';
 

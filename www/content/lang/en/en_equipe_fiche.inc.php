@@ -1,6 +1,6 @@
 <?php /* Traduction de Guillaume Riviere 05 Octobre 2008 */
 
-$page_title='Team sheet';
+$titre_page='Team sheet';
 
 $txt_avert_save='Don\'t forget to save!';
 

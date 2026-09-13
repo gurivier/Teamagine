@@ -1,8 +1,8 @@
 <?php
 
-$page_title='Information of the Creative Contest – 1st Edition';
+$titre_page='Information of the Creative Contest – 1st Edition';
 
-$body_title='Information of the 1st Edition of the Creative Contest';
+$titre_corps='Information of the 1st Edition of the Creative Contest';
 
 $h2_concept='Concept';
 $h2_organisation='Organisers';

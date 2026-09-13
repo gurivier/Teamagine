@@ -30,11 +30,4 @@ $this->m_txt_affiliation='Affiliation';
 $this->m_txt_processus_creativite='Creativity process';
 $this->m_txt_pauses='Breaks';
 
-$this->G_txt_lieu=array(
- 0 => 'ground floor',
- 1 => '1<sup>st</sup> floor',
- 2 => '2<sup>nd</sup> floor'
-);
-
-
 ?>

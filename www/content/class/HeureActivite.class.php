@@ -4,10 +4,11 @@ include_once('content/pkg/no_accent.inc.php');
 
 class HeureActivite {
 
-  //-- CONSTRUCTEURS public
+  //-- CONSTRUCTEURS
 
-  function __construct() {
-
+  public function __construct() {
+    global $lang;
+      
     /* Creation des tableaux */
     $this->m_activite_etape = array();
     $this->m_activite_quoi = array();
@@ -20,75 +21,64 @@ class HeureActivite {
     $this->m_commentaire_outils = '';
     
     /* Initialiser le texte du contenu */
-    $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
     include('content/class/lang/'.$lang.'/'.$lang.'_HeureActivite.class.inc.php');
-    /*---------*/
-    $this->G_OPTIONS_ETAPE = array('ana', 'con', 'sol', 'dim', 'prot', 'chi', 'pre');
-    $this->G_OPTGROUP_ETAPE = array($this->G_GROUP_ETAPE[0], array('proj', 'tac')); // Titre de l'optgroup, suivi des options
-    /*---------*/
-    $this->G_OPTIONS_QUOI = array('pro', 'arc');
-    $this->G_OPTGROUP_QUOI = array($this->G_GROUP_QUOI[0], array('fon', 'asp', 'com', 'mat', 'usa', 'sen', 'erg')); // Titre de l'optgroup, suivi des options
-    /*---------*/
-    $this->G_OPTIONS_OUTILS = array('web', 'rdv', 'bra', 'ref', 'cro', 'met', 'cat', 'sel', 'sch', 'xao', 'bur', 'maq', 'tes', 'exp');
-    $this->G_OPTGROUP_OUTILS = array(); // Titre de l'optgroup, suivi des options
-    /*---------*/
   }
 
-  //-- ACCESSEURS public
+  //-- ACCESSEURS
 
-  function get_nbr_activite() {
+  public function get_nbr_activite() {
     return count($this->m_activite_etape);
   }
 
-  function get_etape($i) {
+  public function get_etape($i) {
     $val = $this->m_activite_etape[$i];
     if ($this->is_key_etape($val)) {
-      return $this->G_ETAPE[$val];
+      return HeureActivite::$G_ETAPE[$val];
     }
     else {
       return htmlentities(no_accent($val)); // Autre
     }
   }
 
-  function get_quoi($i) {
+  public function get_quoi($i) {
     $val=$this->m_activite_quoi[$i];
 
     if ($this->is_key_quoi($val)) {
-      return $this->G_QUOI[$val];
+      return HeureActivite::$G_QUOI[$val];
     }
     else {
       return htmlentities(no_accent($val)); // Autre
     }
   }
 
-  function get_outils($i) {
+  public function get_outils($i) {
     $val=$this->m_activite_outils[$i];
 
     if ($this->is_key_outils($val)) {
-      return $this->G_OUTILS[$val];
+      return HeureActivite::$G_OUTILS[$val];
     }
     else {
       return htmlentities(no_accent($val)); // Autre
     }
   }
 
-  function get_personnes($i) {
+  public function get_personnes($i) {
     return htmlentities(no_accent($this->m_activite_personnes[$i]));
   }
 
-  function get_com_etape() {
+  public function get_com_etape() {
     return $this->m_commentaire_etape;
   }
 
-  function get_com_quoi() {
+  public function get_com_quoi() {
     return $this->m_commentaire_quoi;
   }
 
-  function get_com_outils() {
+  public function get_com_outils() {
     return $this->m_commentaire_outils;
   }
 
-  function get_color($i, $html) {
+  public function get_color($i, $html) {
     return $this->get_color_etape($this->m_activite_etape[$i], $html);
   }
 
@@ -97,18 +87,18 @@ class HeureActivite {
    *
    * Retourne le code couleur HTML si $html vaut vrai, le nom de la classe CSS sinon.
    */
-  function get_color_etape($etape, $html) {
+  public function get_color_etape($etape, $html) {
     if ($this->is_key_etape($etape)) {
-      return ($html) ? $this->G_ETAPE_COLOR_HTML[$etape] : $this->G_ETAPE_COLOR_CSS[$etape];
+      return ($html) ? HeureActivite::$G_ETAPE_COLOR_HTML[$etape] : HeureActivite::$G_ETAPE_COLOR_CSS[$etape];
     }
     else {
-      return ($html) ? $this->G_ETAPE_COLOR_HTML['aut'] : $this->G_ETAPE_COLOR_CSS['aut'];
+      return ($html) ? HeureActivite::$G_ETAPE_COLOR_HTML['aut'] : HeureActivite::$G_ETAPE_COLOR_CSS['aut'];
     }
   }
 
-  //-- METHODES public
+  //-- METHODES
 
-  function clear() {
+  public function clear() {
 
     unset($this->m_activite_etape);
     unset($this->m_activite_quoi);
@@ -121,7 +111,7 @@ class HeureActivite {
     $this->m_activite_personnes = array();
   }
 
-  function ajouter_activite($etape, $quoi, $outils, $nombre) {
+  public function ajouter_activite($etape, $quoi, $outils, $nombre) {
 
     array_push($this->m_activite_etape, $etape);
     array_push($this->m_activite_quoi, $quoi);
@@ -129,42 +119,42 @@ class HeureActivite {
     array_push($this->m_activite_personnes, $nombre);
   }
 
-  function afficher_legende() {
+  public function afficher_legende() {
     echo '<table class="activite">'."\r\n";
     echo '<tr><th> </th><th>'.$this->m_txt_etape.'</th></tr>'."\r\n";
     
     /* Groupes d'options (Un seul groupe ETAPE a l'heure actuelle) */
-    foreach ($this->G_OPTGROUP_ETAPE[1] as $key => $val) {
-      echo '<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende"><span class="italic">'.$this->G_OPTGROUP_ETAPE[0].'</span> : '.$this->G_ETAPE[$val].'</td></tr>'."\r\n";
+    foreach (HeureActivite::$G_OPTGROUP_ETAPE[1] as $key => $val) {
+      echo '<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende"><span class="italic">'.HeureActivite::$G_OPTGROUP_ETAPE[0].'</span> : '.HeureActivite::$G_ETAPE[$val].'</td></tr>'."\r\n";
     }
 
     /* Options */
-    foreach ($this->G_OPTIONS_ETAPE as $key => $val) {
-      echo '<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende">'.$this->G_ETAPE[$val].'</td></tr>'."\r\n";
+    foreach (HeureActivite::$G_OPTIONS_ETAPE as $key => $val) {
+      echo '<tr><td class="'.$this->get_color_etape($val, false).'"> </td><td class="legende">'.HeureActivite::$G_ETAPE[$val].'</td></tr>'."\r\n";
     }
 
     /* Autre */
-    echo '<tr><td class="'.$this->get_color_etape('aut', false).'"> </td><td class="legende"><span class="italic">'.$this->G_ETAPE['aut'].'</span></td></tr>'."\r\n";
+    echo '<tr><td class="'.$this->get_color_etape('aut', false).'"> </td><td class="legende"><span class="italic">'.HeureActivite::$G_ETAPE['aut'].'</span></td></tr>'."\r\n";
 
     /* Nombre de personnne*/
-    echo '<tr><td class="legendenpers">N</td><th class="legende">'.$this->G_txt['personnes'].'</th></tr>'."\r\n";
+    echo '<tr><td class="legendenpers">N</td><th class="legende">'.HeureActivite::$G_txt['personnes'].'</th></tr>'."\r\n";
 
     echo '</table>'."\r\n";
   }
 
-  function afficher_formulaire($h, $couleur) {
+  public function afficher_formulaire($h, $couleur) {
 
     echo '<table class="form_activite">'."\r\n";
     echo '<tr><td> </td>';
-    echo '<th>'.$this->G_txt['etape'].'</th><td>'.$this->G_txt['precisez'].'</td>';
-    echo '<th>'.$this->G_txt['personnes'].'</th>';
-    echo '<th>'.$this->G_txt['quoi'].'</th><td>'.$this->G_txt['precisez'].'</td>';
-    echo '<th>'.$this->G_txt['outils'].'</th><td>'.$this->G_txt['precisez'].'</td>';
+    echo '<th>'.HeureActivite::$G_txt['etape'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>';
+    echo '<th>'.HeureActivite::$G_txt['personnes'].'</th>';
+    echo '<th>'.HeureActivite::$G_txt['quoi'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>';
+    echo '<th>'.HeureActivite::$G_txt['outils'].'</th><td>'.HeureActivite::$G_txt['precisez'].'</td>';
     echo '</tr>'."\r\n";
 
     /* Les options */
 
-    for ($i = 0 ; $i < $this->G_NBR_MAX ; $i++) {
+    for ($i = 0 ; $i < HeureActivite::$G_NBR_MAX ; $i++) {
       echo '<tr class="bg_'.$couleur.'">';
 
       /* Premiere cellule */
@@ -172,12 +162,12 @@ class HeureActivite {
 
       if ($i < count($this->m_activite_etape)) {
         $this->afficher_formulaire_activite($h, $i,
-                                             'etape', $this->G_ETAPE, $this->G_OPTIONS_ETAPE, $this->G_OPTGROUP_ETAPE,
+                                             'etape', HeureActivite::$G_ETAPE, HeureActivite::$G_OPTIONS_ETAPE, HeureActivite::$G_OPTGROUP_ETAPE,
                                              $this->m_activite_etape[$i]);
       }
       else {
         $this->afficher_formulaire_activite($h, $i,
-                                             'etape', $this->G_ETAPE, $this->G_OPTIONS_ETAPE, $this->G_OPTGROUP_ETAPE);
+                                             'etape', HeureActivite::$G_ETAPE, HeureActivite::$G_OPTIONS_ETAPE, HeureActivite::$G_OPTGROUP_ETAPE);
       }
 
       if ($i < count($this->m_activite_personnes)) {
@@ -191,22 +181,22 @@ class HeureActivite {
 
       if ($i < count($this->m_activite_quoi)) {
         $this->afficher_formulaire_activite($h, $i,
-                                             'quoi', $this->G_QUOI, $this->G_OPTIONS_QUOI, $this->G_OPTGROUP_QUOI,
+                                             'quoi', HeureActivite::$G_QUOI, HeureActivite::$G_OPTIONS_QUOI, HeureActivite::$G_OPTGROUP_QUOI,
                                              $this->m_activite_quoi[$i]);
       }
       else {
         $this->afficher_formulaire_activite($h, $i,
-                                             'quoi', $this->G_QUOI, $this->G_OPTIONS_QUOI, $this->G_OPTGROUP_QUOI);
+                                             'quoi', HeureActivite::$G_QUOI, HeureActivite::$G_OPTIONS_QUOI, HeureActivite::$G_OPTGROUP_QUOI);
       }
       
       if ($i < count($this->m_activite_outils)) {
         $this->afficher_formulaire_activite($h, $i,
-                                             'outils', $this->G_OUTILS, $this->G_OPTIONS_OUTILS, $this->G_OPTGROUP_OUTILS,
+                                             'outils', HeureActivite::$G_OUTILS, HeureActivite::$G_OPTIONS_OUTILS, HeureActivite::$G_OPTGROUP_OUTILS,
                                              $this->m_activite_outils[$i]);
       }
       else {
         $this->afficher_formulaire_activite($h, $i,
-                                             'outils', $this->G_OUTILS, $this->G_OPTIONS_OUTILS, $this->G_OPTGROUP_OUTILS);
+                                             'outils', HeureActivite::$G_OUTILS, HeureActivite::$G_OPTIONS_OUTILS, HeureActivite::$G_OPTGROUP_OUTILS);
       }
       
       echo '</tr>'."\r\n";
@@ -223,17 +213,17 @@ class HeureActivite {
 
     echo '<tr>';
     echo '<td> </td>';
-    echo '<th colspan="3">'.$this->G_txt['com'].'</th>';
-    echo '<th colspan="2">'.$this->G_txt['com'].'</th>';
-    echo '<th colspan="2">'.$this->G_txt['com'].'</th>';
+    echo '<th colspan="3">'.HeureActivite::$G_txt['com'].'</th>';
+    echo '<th colspan="2">'.HeureActivite::$G_txt['com'].'</th>';
+    echo '<th colspan="2">'.HeureActivite::$G_txt['com'].'</th>';
     echo '</tr>'."\r\n";  
 
     echo '</table>'."\r\n";
 
-    echo '<p class="italic">(<span class="bold">'.$this->G_txt['personnes'].'</span> = '.$this->G_txt['rmq_nbr_pers'].'.)</p>';
+    echo '<p class="italic">(<span class="bold">'.HeureActivite::$G_txt['personnes'].'</span> = '.HeureActivite::$G_txt['rmq_nbr_pers'].'.)</p>';
   }
 
-  function afficher_formulaire_activite($h, $i, $label, &$OPTION_NAME, &$options, &$optgroup, $type = '') {
+  protected function afficher_formulaire_activite($h, $i, $label, &$OPTION_NAME, &$options, &$optgroup, $type = '') {
 
     /* Debut du champ select */
     echo '<td><select id="EQ_'.$label.'_'.$h.'_'.$i.'" name="EQ_'.$label.'['.$h.']['.$i.']" onchange="document.getElementById(\'EQ_'.$label.'Autre'.$h.'_'.$i.'\').disabled=(this.options[this.selectedIndex].value != \'aut\'); ">';
@@ -273,7 +263,7 @@ class HeureActivite {
     echo "\r\n";  
   }
 
-  function afficher_formulaire_option($h, $i, &$OPTION_NAME, &$options, $type) {
+  protected function afficher_formulaire_option($h, $i, &$OPTION_NAME, &$options, $type) {
 
     /* Liste de choix pour le type */
     $autre = true;
@@ -300,7 +290,7 @@ class HeureActivite {
     return $autre;
   }
   
-  function afficher_formulaire_optgroup($h, $i, &$OPTION_NAME, &$optgroup, $type) {
+  protected function afficher_formulaire_optgroup($h, $i, &$OPTION_NAME, &$optgroup, $type) {
 
     /* Liste de choix pour le type */
     $autre = true;
@@ -322,9 +312,9 @@ class HeureActivite {
     return $autre;
   }
 
-  function enregistrer_formulaire($h) {
+  public function enregistrer_formulaire($h) {
 
-    for ($i = 0 ; $i < $this->G_NBR_MAX ; $i++) {
+    for ($i = 0 ; $i < HeureActivite::$G_NBR_MAX ; $i++) {
 
       $etape = $_POST['EQ_etape'][$h][$i] ?? '';
       $etape = htmlentities(no_accent($etape));
@@ -376,7 +366,7 @@ class HeureActivite {
     $this->m_commentaire_outils = str_replace(array("\r\n", "\n", "\r"), '\nl', $outils_com);
   }
 
-  function serialize($h, $desc) {
+  public function serialize($h, $desc) {
 
     fputs($desc, $h.'>'."\r\n");
     fputs($desc, $h.'>'.$this->m_commentaire_etape.'>'."\r\n");
@@ -388,7 +378,7 @@ class HeureActivite {
     }
   }
 
-  function unserialize_activite($h, $desc) {
+  public function unserialize_activite($h, $desc) {
     $line = fgets($desc);
     $tab = explode(">", $line);
 
@@ -401,28 +391,26 @@ class HeureActivite {
     return $h;
   }
 
-  function unserialize_com_etape($desc) {
+  public function unserialize_com_etape($desc) {
     $line = fgets($desc);
     $tab = explode(">", $line);
     $this->m_commentaire_etape = $tab[1];
   }
 
-  function unserialize_com_quoi($desc) {
+  public function unserialize_com_quoi($desc) {
     $line = fgets($desc);
     $tab = explode(">", $line);
     $this->m_commentaire_quoi = $tab[1];
   }
 
-  function unserialize_com_outils($desc) {
+  public function unserialize_com_outils($desc) {
     $line = fgets($desc);
     $tab = explode(">", $line);
     $this->m_commentaire_outils = $tab[1];
   }
 
-  //-- METHODES protected
-  
-  function find_key_etape($etape) {
-    foreach ($this->G_ETAPE as $key => $val) {
+  protected function find_key_etape($etape) {
+    foreach (HeureActivite::$G_ETAPE as $key => $val) {
       if ($val == $etape) {
         return $key;
       }
@@ -430,8 +418,8 @@ class HeureActivite {
     return 'aut';
   }
 
-  function find_key_quoi($quoi) {
-    foreach ($this->G_QUOI as $key => $val) {
+  protected function find_key_quoi($quoi) {
+    foreach (HeureActivite::$G_QUOI as $key => $val) {
       if ($val == $quoi) {
         return $key;
       }
@@ -439,8 +427,8 @@ class HeureActivite {
     return 'aut';
   }
 
-  function find_key_outils($outils) {
-    foreach ($this->G_OUTILS as $key => $val) {
+  protected function find_key_outils($outils) {
+    foreach (HeureActivite::$G_OUTILS as $key => $val) {
       if ($val == $outils) {
         return $key;
       }
@@ -448,8 +436,8 @@ class HeureActivite {
     return 'aut';
   }
 
-  function is_key_etape($etape) {
-    foreach ($this->G_ETAPE as $key => $val)  {
+  protected function is_key_etape($etape) {
+    foreach (HeureActivite::$G_ETAPE as $key => $val)  {
       if ($key == $etape) {
         return true;
       }
@@ -457,8 +445,8 @@ class HeureActivite {
     return false;
   }
 
-  function is_key_quoi($quoi) {
-    foreach ($this->G_QUOI as $key => $val) {
+  protected function is_key_quoi($quoi) {
+    foreach (HeureActivite::$G_QUOI as $key => $val) {
       if ($key == $quoi) {
         return true;
       }
@@ -466,8 +454,8 @@ class HeureActivite {
     return false;
   }
 
-  function is_key_outils($outils) {
-    foreach ($this->G_OUTILS as $key => $val) {
+  protected function is_key_outils($outils) {
+    foreach (HeureActivite::$G_OUTILS as $key => $val) {
       if ($key == $outils) {
         return true;
       }
@@ -475,43 +463,41 @@ class HeureActivite {
     return false;
   }
 
-  //-- MEMBRES private
+  //-- MEMBRES
 
-  var $m_txt_etape;          // string
+  private $m_txt_etape;          // string
     
-  var $m_activite_etape;     // string[]
-  var $m_activite_quoi;      // string[]
-  var $m_activite_outils;    // string[]
-  var $m_activite_personnes; // string[]
+  private $m_activite_etape;     // string[]
+  private $m_activite_quoi;      // string[]
+  private $m_activite_outils;    // string[]
+  private $m_activite_personnes; // string[]
 
-  var $m_commentaire_etape;  // string
-  var $m_commentaire_quoi;   // string
-  var $m_commentaire_outils; // string
+  private $m_commentaire_etape;  // string
+  private $m_commentaire_quoi;   // string
+  private $m_commentaire_outils; // string
+    
+  //-- MEMBRES static
 
-  /*---------*/
-  var $G_ETAPE;
-  var $G_GROUP_ETAPE;
-  var $G_OPTIONS_ETAPE;
-  var $G_OPTGROUP_ETAPE; // Titre de l'optgroup, suivi des options
-  /*---------*/
-  var $G_QUOI;
-  var $G_GROUP_QUOI;
-  var $G_OPTIONS_QUOI;
-  var $G_OPTGROUP_QUOI; // Titre de l'optgroup, suivi des options
-  /*---------*/
-  var $G_OUTILS;
-  var $G_GROUP_OUTILS;
-  var $G_OPTIONS_OUTILS;
-  var $G_OPTGROUP_OUTILS; // Titre de l'optgroup, suivi des options
-  /*---------*/
+  private static $G_NBR_MAX = 10; // Nombre maximum d'activites
 
-  var $G_txt;
+  public static $G_txt;
 
-  //-- MEMBRES private static                        
+  public static $G_ETAPE;
+  public static $G_GROUP_ETAPE;
+  public static $G_OPTIONS_ETAPE;
+  public static $G_OPTGROUP_ETAPE; // Titre de l'optgroup, suivi des options
 
-  var $G_NBR_MAX = 10;          // Nombre maximum d'activites
+  public static $G_QUOI;
+  public static $G_GROUP_QUOI;
+  public static $G_OPTIONS_QUOI;
+  public static $G_OPTGROUP_QUOI; // Titre de l'optgroup, suivi des options
 
-  var $G_ETAPE_COLOR_HTML=array(
+  public static $G_OUTILS;
+  public static $G_GROUP_OUTILS;
+  public static $G_OPTIONS_OUTILS;
+  public static $G_OPTGROUP_OUTILS; // Titre de l'optgroup, suivi des options
+    
+  private static $G_ETAPE_COLOR_HTML=array(
     'ana' => '#A52A2A',  /* Rouge */
     'con' => '#D2691E',  /* Rouge orange */
     'sol' => '#FC0',     /* Jaune */
@@ -524,7 +510,7 @@ class HeureActivite {
     'aut' => '#000'      /* (couleur qui se distange, beige, marron clair, ...) */
   );
     
-  var $G_ETAPE_COLOR_CSS=array(
+  private static $G_ETAPE_COLOR_CSS=array(
     'ana' => 'rge',   /* Rouge */
     'con' => 'org',   /* Rouge orange */
     'sol' => 'jau',   /* Jaune */
@@ -536,7 +522,17 @@ class HeureActivite {
     'pre' => 'gri',   /* Gris fonce */
     'aut' => 'aut'    /* (couleur qui se distange, beige, marron clair, ...) */
   );
-
 }
+
+include_once('content/class/lang/'.$lang.'/'.$lang.'_HeureActivite.static.class.inc.php');
+
+HeureActivite::$G_OPTIONS_ETAPE=array('ana', 'con', 'sol', 'dim', 'prot', 'chi', 'pre');
+HeureActivite::$G_OPTGROUP_ETAPE=array(HeureActivite::$G_GROUP_ETAPE[0], array('proj', 'tac')); // Titre de l'optgroup, suivi des options
+
+HeureActivite::$G_OPTIONS_QUOI=array('pro', 'arc');
+HeureActivite::$G_OPTGROUP_QUOI=array(HeureActivite::$G_GROUP_QUOI[0], array('fon', 'asp', 'com', 'mat', 'usa', 'sen', 'erg')); // Titre de l'optgroup, suivi des options
+
+HeureActivite::$G_OPTIONS_OUTILS=array('web', 'rdv', 'bra', 'ref', 'cro', 'met', 'cat', 'sel', 'sch', 'xao', 'bur', 'maq', 'tes', 'exp');
+HeureActivite::$G_OPTGROUP_OUTILS=array(); // Titre de l'optgroup, suivi des options
 
 ?>

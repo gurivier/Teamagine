@@ -1,6 +1,6 @@
 <?php /* Traduction de Guillaume Riviere 05 Octobre 2008 */
 
-$page_title='Team registration';
+$titre_page='Team registration';
 
 $h3_1='Authentification failed';
 $p_11='Attention! Informations have not been recorded.';

@@ -1,5 +1,5 @@
 <?php
 
-$page_title='Legend for activities';
+$titre_page='Legend for activities';
 
 ?>

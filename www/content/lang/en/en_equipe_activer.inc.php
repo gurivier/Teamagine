@@ -1,6 +1,6 @@
 <?php /* Traduction de Guillaume Riviere 05 Octobre 2008 */
 
-$page_title='Enable a team sheet';
+$titre_page='Enable a team sheet';
 
 $txt_avert_passwd='Failed! Wrong Number or Password.';
 

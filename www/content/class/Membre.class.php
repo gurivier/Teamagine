@@ -2,43 +2,43 @@
 
 class Membre {
 
-  //-- CONSTRUCTEURS public
+  //-- CONSTRUCTEURS
 
-  function __construct($nom = '', $prenom = '', $affiliation = '') {
+  public function __construct($nom = '', $prenom = '', $affiliation = '') {
     $this->m_nom = $nom;
     $this->m_prenom = $prenom;
     $this->m_affiliation = $affiliation;
   }
 
-  //-- METHODES public
+  //-- METHODES
 
-  function afficher() {
+  public function afficher() {
     echo str_replace('\\\'', "'", $this->m_prenom).' '.str_replace('\\\'', "'", $this->m_nom);
     if ($this->m_affiliation != '') {
       echo ' <span class="italic">('.str_replace('\\\'', "'", $this->m_affiliation).')</span> ';
     }
   }
 
-  function afficher_formulaire($i) {
+  public function afficher_formulaire($i) {
     membre_afficher_formulaire($i, str_replace('\\\'', "'", $this->m_nom), str_replace('\\\'', "'", $this->m_prenom), str_replace('\\\'', "'",$this->m_affiliation));
   }
 
-  function serialize($desc) {
+  public function serialize($desc) {
     fputs($desc, 'MEMBRE>'.$this->m_nom.'>'.$this->m_prenom.'>'.$this->m_affiliation.'>'."\r\n");    
   }
 
-  function unserialize($desc) {
+  public function unserialize($desc) {
     $tab = explode(">", fgets($desc)); // Lire une ligne et la decomposer dans un tableau
     $this->m_nom = $tab[1];
     $this->m_prenom = $tab[2];
     $this->m_affiliation = $tab[3];
   }
 
-  //-- MEMBRES private
+  //-- MEMBRES
 
-  var $m_nom;           // string
-  var $m_prenom;        // string
-  var $m_affiliation;   // string
+  private $m_nom;           // string
+  private $m_prenom;        // string
+  private $m_affiliation;   // string
 }
 
 //-- FONCTIONS amies

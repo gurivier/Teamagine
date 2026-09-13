@@ -1,6 +1,6 @@
-<?php
+!<?php
 
-$page_title='Activer une &eacute;quipe';
+$titre_page='Activer une &eacute;quipe';
 
 $txt_avert_passwd='Echec ! Num&eacute;ro ou Mot de passe invalides.';
 

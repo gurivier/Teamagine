@@ -1,4 +1,4 @@
-<?php
+!<?php
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -6,7 +6,7 @@ include_once('pkg/erreurs.inc.php');
 
 //== i18n
 $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
-$i18n='content/lang/'.$lang.'/'.$lang.'_equipe_legende.inc.php'; // $page_title
+$i18n='content/lang/'.$lang.'/'.$lang.'_equipe_legende.inc.php'; // $titre_page
 include($i18n);
 
 //== head

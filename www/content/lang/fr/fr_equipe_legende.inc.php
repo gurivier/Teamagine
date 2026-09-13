@@ -1,5 +1,5 @@
-<?php
+!<?php
 
-$page_title='L&eacute;gende des activit&eacute;s";
+$titre_page='L&eacute;gende des activit&eacute;s";
 
 ?>

@@ -41,7 +41,7 @@ if ($page_debrief) {
  echo '<link href="page/style/debrief.css" rel="stylesheet" type="text/css" title="screen1" />';
 }
 
-echo '<title>'.$page_title.'</title>';
+echo '<title>'.$titre_page.'</title>';
 ?>
 
 <script type="text/javascript">

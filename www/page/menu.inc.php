@@ -19,19 +19,19 @@ echo '<img id="logoevt" src="page/img/logo-'.$ev->couleur.'.png" alt="Logo '.$ev
 
 echo '<ul>';
 
-$class = ($selected=='informations') ? 'class="selected" ' : '';
+$class = ($selection=='informations') ? 'class="selected" ' : '';
 echo '<li><a '.$class.'href="index.php?lang='.$lang.'">'.$menu_1.'</a></li>';
 
-$class = ($selected=='reglement') ? 'class="selected" ' : '';
+$class = ($selection=='reglement') ? 'class="selected" ' : '';
 echo '<li><a '.$class.' href="reglement.php?lang='.$lang.'">'.$menu_4.'</a></li>';
 
 if ($H>-6) {
-  $class = ($selected=='equipes') ? 'class="selected" ' : '';
+  $class = ($selection=='equipes') ? 'class="selected" ' : '';
   echo '<li><a '.$class.' href="equipes.php?lang='.$lang.'">'.$menu_9.'</a></li>';
 }
 
 if ($prix=='open') {
-  $class = ($selected=='palmares') ? 'class="selected" ' : '';
+  $class = ($selection=='palmares') ? 'class="selected" ' : '';
   echo '<li><a '.$class.' href="palmares.php?lang='.$lang.'">'.$menu_12.'</a></li>';
 }
 

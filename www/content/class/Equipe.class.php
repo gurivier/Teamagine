@@ -7,10 +7,11 @@ include_once('content/pkg/no_accent.inc.php');
 
 class Equipe {
 
-  //-- CONSTRUCTEURS public
+  //-- CONSTRUCTEURS
 
-  function __construct($num) {
+  public function __construct($num) {
     global $ev;
+    global $lang;
     
     $this->m_num = $num;
 
@@ -33,59 +34,62 @@ class Equipe {
     }
 
     /* Initialiser le texte du contenu */
-    $this->m_lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
-    include('content/class/lang/'.$this->m_lang.'/'.$this->m_lang.'_Equipe.class.inc.php');
+    include('content/class/lang/'.$lang.'/'.$lang.'_Equipe.class.inc.php');
   }
 
-  //-- ACCESSEURS public
+  //-- ACCESSEURS
 
-  function set_nom($nom) {
+  public function set_nom($nom) {
     $this->m_nom = $nom;
   }
 
-  function get_nom() {
+  public function get_nom() {
     return $this->m_nom;
   }
 
-  function set_projet($projet) {
+  public function set_projet($projet) {
     $this->m_projet = $projet;
   }
 
-  function set_commentaire($commentaire) {
+  public function set_commentaire($commentaire) {
     $this->m_commentaire = $commentaire;
   }
 
-  function set_lieu($etage, $salle, $endroit) {
+  public function set_lieu($etage, $salle, $endroit) {
     $this->m_lieu_etage = $etage;
     $this->m_lieu_salle = $salle;
     $this->m_lieu_endroit = $endroit;
   }
 
-  function set_activite($h, $type, $description) {
+  public function set_pause($h, $en_pause) {
+    $this->m_pauses[$h] = $en_pause;
+  }
+    
+  public function set_activite($h, $type, $description) {
     return $this->m_activites[$h]->add_activite($type, $description);
   }
 
-  //-- METHODES public
+  //-- METHODES
 
-  function clear_activite($h) {
+  public function clear_activite($h) {
     $this->m_activites[$h]->clear();
   }
 
-  function clear_membres() {
+  public function clear_membres() {
     unset($this->m_membres);
     $this->m_membres = array();
   }
 
-  function ajouter_membre($nom, $prenom, $affiliation) {
+  public function ajouter_membre($nom, $prenom, $affiliation) {
       $membre = new Membre($nom, $prenom, $affiliation);
       array_push($this->m_membres, $membre);
   }
 
-  function ajouter_activite($activite) {
+  public function ajouter_activite($activite) {
       array_push($this->m_activites, $activite);
   }
 
-  function generer_js_afficher_colone($h) {
+  protected function generer_js_afficher_colone($h) {
     $com_etape = $this->m_activites[$h]->get_com_etape();
     $com_quoi = $this->m_activites[$h]->get_com_quoi();
     $com_outils = $this->m_activites[$h]->get_com_outils();
@@ -100,7 +104,7 @@ class Equipe {
     return false;
   }
 
-  function generer_js_afficher_colone_vide() {
+  protected function generer_js_afficher_colone_vide() {
     echo 'function afficher_colone_'.$this->m_num.'_vide() {'."\r\n";
     echo 'document.getElementById(\'ComEtape'.$this->m_num.'\').innerHTML = \'H=\';'."\r\n";
     echo 'document.getElementById(\'ComQuoi'.$this->m_num.'\').innerHTML = \'H=\';'."\r\n";
@@ -108,15 +112,15 @@ class Equipe {
     echo '}'."\r\n";
   }
 
-  function afficher_nom($tag) {
+  protected function afficher_nom($tag) {
     echo '<'.$tag.'><a name="'.$this->m_num.'"> </a>'.$this->m_num.' - '.str_replace('\\\'', "'", $this->m_nom).'</'.$tag.'>'."\r\n";
   }
 
-  function afficher_projet() {
+  protected function afficher_projet() {
     echo '<p class="bold"><span class="upper">'.$this->m_txt_projet_.'</span> '.str_replace('\\\'', "'", $this->m_projet).'</p>'."\r\n";
   }
     
-  function afficher_membres() {
+  protected function afficher_membres() {
     if (isset($this->m_membres) && count($this->m_membres) > 0) {
     echo '<p class="bold upper">'.$this->m_txt_membres_.'</p>'."\r\n";
       echo '<ol class="membres">';
@@ -129,7 +133,7 @@ class Equipe {
     }
   }
 
-  function afficher_pour_palmares($txt_prix, $img_prix='') {
+  public function afficher_pour_palmares($txt_prix, $img_prix='') {
 
     /* Afficher le prix */
     echo '<h2>'.$txt_prix.'</h2>';
@@ -153,15 +157,16 @@ class Equipe {
     }
   }
 
-  function afficher() {
+  public function afficher() {
     global $ev;
     global $H;
+    global $lang;
     
     /* Afficher le nom de l'equipe */
     $this->afficher_nom('h2');
     
     if ($H > 0 && $H <= $ev->duree) {
-      echo '<p class="fluxR"><a href="equipe_fiche.php?lang='.$this->m_lang.'&amp;e='.$this->m_num.'">'.$this->m_txt_modifier_fiche.'</a></p>'."\r\n";
+      echo '<p class="fluxR"><a href="equipe_fiche.php?lang='.$lang.'&amp;e='.$this->m_num.'">'.$this->m_txt_modifier_fiche.'</a></p>'."\r\n";
     }
     
     /* Afficher le projet de l'equipe */
@@ -170,7 +175,7 @@ class Equipe {
     /* Afficher le lieu de travail de l'equipe */
     if (isset($_GET['lieu'])) {
       echo '<p><span class="bold">'.$this->m_txt_lieu.'</span> ';
-      echo $this->G_txt_lieu[$this->m_lieu_etage];
+      echo Equipe::$G_txt_lieu[$this->m_lieu_etage];
       if ($this->m_lieu_salle!='') echo ' / '.$this->m_txt_salle.' '.str_replace('\\\'', "'", $this->m_lieu_salle);
       if ($this->m_lieu_endroit!='') echo ' / '.str_replace('\\\'', "'", $this->m_lieu_endroit);
       echo '</p>'."\r\n";
@@ -317,7 +322,7 @@ class Equipe {
 
   }
 
-  function afficher_debrief() {
+  public function afficher_debrief() {
     global $ev;
 
     /* Afficher le nom de l'equipe */
@@ -415,7 +420,7 @@ class Equipe {
     echo '</table>';
   }
 
-  function afficher_formulaire() {
+  public function afficher_formulaire() {
     global $ev;
     global $H;
       
@@ -437,9 +442,9 @@ class Equipe {
     echo '<tr><td>'.$this->m_txt_etage.'</td><td>'.str_replace('\\\'', "'", $this->m_txt_salle).'</td><td>'.str_replace('\\\'', "'", $this->m_txt_endroit).'</td></tr>';
     echo '<tr>';
     echo '<td><select id="EquipeLieu_etage" name="EquipeLieu_etage" />';
-    echo '<option value="0" '.(($this->m_lieu_etage==0)?'selected="selected"':'').'>'.$this->G_txt_lieu[0].'</option>';
-    echo '<option value="1" '.(($this->m_lieu_etage==1)?'selected="selected"':'').'>'.$this->G_txt_lieu[1].'</option>';
-    echo '<option value="2" '.(($this->m_lieu_etage==2)?'selected="selected"':'').'>'.$this->G_txt_lieu[2].'</option>';
+    echo '<option value="0" '.(($this->m_lieu_etage==0)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[0].'</option>';
+    echo '<option value="1" '.(($this->m_lieu_etage==1)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[1].'</option>';
+    echo '<option value="2" '.(($this->m_lieu_etage==2)?'selected="selected"':'').'>'.Equipe::$G_txt_lieu[2].'</option>';
     echo '</select></td>';
     echo '<td><input class="text_small" type="text" id="EquipeLieu_salle" name="EquipeLieu_salle" value="'.html_entity_decode($this->m_lieu_salle).'" /></td>';
     echo '<td><input class="text_large" type="text" id="EquipeLieu_endroit" name="EquipeLieu_endroit" value="'.html_entity_decode($this->m_lieu_endroit).'" /></td>';
@@ -505,16 +510,16 @@ class Equipe {
     }
   }
 
-  function enregistrer_formulaire($h) {
+  public function enregistrer_formulaire($h) {
     $this->clear_activite($h);
     $this->m_activites[$h]->enregistrer_formulaire($h);
   }
 
-  function serialize() {
+  public function serialize() {
     global $ev;
       
     /* Ouverture d'un descripteur en lecture seule */
-    $desc = fopen($this->G_PATH.$this->m_num.'.txt', 'w');
+    $desc = fopen(Equipe::$G_PATH.$this->m_num.'.txt', 'w');
 
     if (!$desc) {
       die('Erreur ouverture fichier '.$this->m_num.'.txt en ecriture');
@@ -554,10 +559,10 @@ class Equipe {
     fclose($desc);
   }
 
-  function unserialize() {
+  public function unserialize() {
     global $ev;
 
-    $file = $this->G_PATH.$this->m_num.'.txt';
+    $file = Equipe::$G_PATH.$this->m_num.'.txt';
     
     if (file_exists($file)) {
 
@@ -627,56 +632,58 @@ class Equipe {
     }
   }
     
-  //-- MEMBRES private
+  //-- MEMBRES
 
-  var $m_num;        // string
-  var $m_nom;        // string
-  var $m_projet;     // string
-  var $m_lieu_etage; // string
-  var $m_lieu_salle; // string
-  var $m_lieu_endroit; // string
-  var $m_commentaire; // string
-  var $m_membres;    // Membre[]
-  var $m_pauses;     // boolean[]
-  var $m_activites;  // HeureActivite[]
+  private $m_num;        // string
+  private $m_nom;        // string
+  private $m_projet;     // string
+  private $m_lieu_etage; // string
+  private $m_lieu_salle; // string
+  private $m_lieu_endroit; // string
+  private $m_commentaire; // string
+  private $m_membres;    // Membre[]
+  private $m_pauses;     // boolean[]
+  private $m_activites;  // HeureActivite[]
 
-  var $m_lang;
+  private $m_lang;
 
   /* Texte du contenu */
-  var $m_txt_modifier_fiche;
+  private $m_txt_modifier_fiche;
   /*--*/
-  var $m_txt_projet_;
-  var $m_txt_membres_;
-  var $m_txt_processus_creativite_;
-  var $m_txt_legende;
-  var $m_txt_passer_souris;
-  var $m_txt_les_pauses;
-  var $m_txt_commentaires;
-  var $m_txt_etape;
-  var $m_txt_sur_quoi;
-  var $m_txt_methode;
-  var $m_txt_nbrpers;
+  private $m_txt_projet_;
+  private $m_txt_membres_;
+  private $m_txt_processus_creativite_;
+  private $m_txt_legende;
+  private $m_txt_passer_souris;
+  private $m_txt_les_pauses;
+  private $m_txt_commentaires;
+  private $m_txt_etape;
+  private $m_txt_sur_quoi;
+  private $m_txt_methode;
+  private $m_txt_nbrpers;
   /*--*/
-  var $m_txt_projet;
-  var $m_txt_nom_equipe;
-  var $m_txt_titre_projet;
-  var $m_txt_lieu;
-  var $m_txt_lieu_rmq;
-  var $m_txt_etage;
-  var $m_txt_salle;
-  var $m_txt_endroit;
-  var $m_txt_commentaire;
-  var $m_txt_membres;
-  var $m_txt_nom;
-  var $m_txt_prenom;
-  var $m_txt_affiliation;
-  var $m_txt_processus_creativite;
-  var $m_txt_pauses;
+  private $m_txt_projet;
+  private $m_txt_nom_equipe;
+  private $m_txt_titre_projet;
+  private $m_txt_lieu;
+  private $m_txt_lieu_rmq;
+  private $m_txt_etage;
+  private $m_txt_salle;
+  private $m_txt_endroit;
+  private $m_txt_commentaire;
+  private $m_txt_membres;
+  private $m_txt_nom;
+  private $m_txt_prenom;
+  private $m_txt_affiliation;
+  private $m_txt_processus_creativite;
+  private $m_txt_pauses;
 
-  //-- MEMBRES private static
+  //-- MEMBRES private
 
-  var $G_PATH = 'data/equipes/';
-  var $G_txt_lieu;
+  private static $G_PATH = 'data/equipes/';
+  public static $G_txt_lieu;
 }
+
+include('content/class/lang/'.$lang.'/'.$lang.'_Equipe.static.class.inc.php');
 
 ?>

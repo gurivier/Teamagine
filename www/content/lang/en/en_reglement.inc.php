@@ -1,8 +1,8 @@
 <?php
 
-$page_title='Rules of the Creative Contest – 1st Edition';
+$titre_page='Rules of the Creative Contest – 1st Edition';
 
-$body_title='Rules of the 1st Edition of the Creative Contest';
+$titre_corps='Rules of the 1st Edition of the Creative Contest';
 
 $h2_article1='Participants';
 $h2_article2='Teams';

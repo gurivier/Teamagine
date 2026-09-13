@@ -8,7 +8,7 @@ echo "<!-- DEBUT SUIVI -->\r\n";
 
 echo '<div class="fluxL">';
 
-echo '<p class="bold">'.$body_title_01.'<br/>'.$body_title_02.'<br/><br/></p>';
+echo '<p class="bold">'.$titre_corps_01.'<br/>'.$titre_corps_02.'<br/><br/></p>';
 
 include_once('pkg/temps.inc.php'); // $H
 

@@ -1,6 +1,6 @@
-<?php
+!<?php
 
-$page_title='Enregistrer &eacute;quipe';
+$titre_page='Enregistrer &eacute;quipe';
 
 $h3_1='Echec d\'authentification';
 $p_11='Avertissement ! Les informations n\'ont pas &eacute;t&eacute; enregistr&eacute;es.';

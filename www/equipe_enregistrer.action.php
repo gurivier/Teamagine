@@ -1,4 +1,4 @@
-<?php
+!<?php
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -6,7 +6,7 @@ include_once('pkg/erreurs.inc.php');
 
 $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
 
-include_once('config/params.inc.php'); // $ev
+include_once('config/Evenement.class.php'); // $ev
 
 include_once('auth/auth.inc.php');
 include_once('pkg/verif.inc.php');
@@ -95,7 +95,7 @@ else {
   
   for ($h = 0 ; $h < $ev->duree ; $h++) {
     $EQ_pause = $_POST['EQ_pause'][$h] ?? '0';
-    $equipe->m_pauses[$h] = ($EQ_pause == '1') ? true : false;
+    $equipe->set_pause($h, ($EQ_pause == '1'));
   }
 
   /* Enregistrement des activites */

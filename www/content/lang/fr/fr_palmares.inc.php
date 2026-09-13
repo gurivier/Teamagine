@@ -1,8 +1,8 @@
 <?php
 
-$page_title='R&eacute;sultats du Concours Cr&eacute;atif – 1re &eacute;dition';
+$titre_page='R&eacute;sultats du Concours Cr&eacute;atif – 1re &eacute;dition';
 
-$body_title='Palmar&egrave;s de la 1re &eacute;dition du Concours Cr&eacute;atif';
+$titre_corps='Palmar&egrave;s de la 1re &eacute;dition du Concours Cr&eacute;atif';
 
 $txt_projet='Projet :';
 

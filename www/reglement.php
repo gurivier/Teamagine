@@ -6,7 +6,7 @@ include_once('pkg/erreurs.inc.php');
 
 //== i18n
 $lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
-$i18n='content/lang/'.$lang.'/'.$lang.'_reglement.inc.php'; // $page_title  $body_title
+$i18n='content/lang/'.$lang.'/'.$lang.'_reglement.inc.php'; // $titre_page  $titre_corps
 include($i18n);
 
 //== head
@@ -20,13 +20,13 @@ echo '<div id="body">';
 include('page/entete.inc.php');
 
 //== menu
-$selected='reglement';
+$selection='reglement';
 include('page/menu.inc.php');
 
 //== content
 echo '<div id="corpsPage" class="corps">';
 
-echo '<p class="italic bold center">'.$body_title.'</p>';
+echo '<p class="italic bold center">'.$titre_page.'</p>';
 
 include('content/reglement.inc.php');
 

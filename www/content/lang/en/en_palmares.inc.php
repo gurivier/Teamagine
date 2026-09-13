@@ -1,8 +1,8 @@
 <?php
 
-$page_title='Results of the Creative Contest – 1st Edition';
+$titre_page='Results of the Creative Contest – 1st Edition';
 
-$body_title='List of the Winners of the 1st Edition of the Creative Contest';
+$titre_corps='List of the Winners of the 1st Edition of the Creative Contest';
 
 $txt_projet='Project:';
 

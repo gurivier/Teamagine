@@ -30,10 +30,4 @@ $this->m_txt_affiliation='Affiliation';
 $this->m_txt_processus_creativite='Processus de cr&eacute;ativit&eacute;';
 $this->m_txt_pauses='Pauses';
 
-$this->G_txt_lieu=array(
- 0 => 'rdc',
- 1 => '1<sup>er</sup> &eacute;tage',
- 2 => '2<sup>&egrave;me</sup> &eacute;tage'
-);
-
 ?>

@@ -1,8 +1,8 @@
 <?php
 
-$page_title='R&egrave;glement du Concours Cr&eacute;atif – 1re &eacute;dition';
+$titre_page='R&egrave;glement du Concours Cr&eacute;atif – 1re &eacute;dition';
 
-$body_title='R&egrave;glement de la 1re &eacute;dition du Concours Cr&eacute;atif';
+$titre_corps='R&egrave;glement de la 1re &eacute;dition du Concours Cr&eacute;atif';
 
 $h2_article1='Les personnes participantes';
 $h2_article2='Les &eacute;quipes';

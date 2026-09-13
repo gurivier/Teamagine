@@ -1,8 +1,8 @@
 <?php
 
-$page_title='Informations du Concours Cr&eacute;atif – 1re &eacute;dition';
+$titre_page='Informations du Concours Cr&eacute;atif – 1re &eacute;dition';
 
-$body_title='Informations de la 1re &eacute;dition du Concours Cr&eacute;atif';
+$titre_corps='Informations de la 1re &eacute;dition du Concours Cr&eacute;atif';
 
 $h2_concept='Concept';
 $h2_organisation='Organisation';

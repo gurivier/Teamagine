@@ -1,9 +1,9 @@
 <?php
 
-$page_title='Les &eacute;quipes du Concours Cr&eacute;atif – 1re &eacute;dition';
+$titre_page='Les &eacute;quipes du Concours Cr&eacute;atif – 1re &eacute;dition';
 
-$body_title_01='Concours Cr&eacute;atif :';
-$body_title_02='L\'&Eacute;v&egrave;nement, Heure par Heure.';
+$titre_corps_01='Concours Cr&eacute;atif :';
+$titre_corps_02='L\'&Eacute;v&egrave;nement, Heure par Heure.';
 
 $txt_activer_fiche='Activer votre fiche &eacute;quipe</a>';
 

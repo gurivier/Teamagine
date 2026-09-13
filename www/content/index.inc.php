@@ -14,8 +14,16 @@ echo '<p>'.$lipsum.'</p>';
 
 echo '<h2>'.$h2_inscription.'</h2>';
 
-echo '<p>'.$txt_contact.' <a href="mailto:contact@creativity.eu">contact@creativity.eu</a></p>';
-   
+$inscriptions_objet=array('fr'=>'[INSCRIPTION CC2026E1] NOM Prénom', 'en'=>'[INSCRIPTION CC2026E1] SURNAME Firstname');
+$inscriptions_corps=array('fr'=>'Affiliation, Droit à l\'image, Charte de comportement, Régime alimentaire', 'en'=>'Affiliation, Image rights, Code of conduct, Food');
+
+$objet=urlencode($inscriptions_objet[$lang]);
+$corps=urlencode($inscriptions_corps[$lang]);
+
+$mailto='mailto:'.$ev->contact.'?subject='.$objet.'&amp;body='.$corps;
+
+echo '<p>'.$txt_contact.' <a href="'.$mailto.'">'.$ev->contact.'</a></p>';
+
 echo '<h2>'.$h2_localisation.'</h2>';
 
 echo '<p>'.$lipsum.'</p>';

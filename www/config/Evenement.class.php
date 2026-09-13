@@ -5,42 +5,46 @@
 class Evenement {
 
   // Execution
-  var $montrer_erreurs_php = true;
+  public $montrer_erreurs_php=true;
 
   // Theme
-  var $couleur = 'rouge'; // bleu rose rouge sarcelle vert
+  public $couleur='rouge'; // bleu rose rouge sarcelle vert
     
   // Membres des equipes
-  var $max_membres = 10;
+  public $max_membres=10;
   
   // Date
-  var $depart_A = '2026';
-  var $depart_M = '12';
-  var $depart_J = '03';
+  public $depart_A='2026';
+  public $depart_M='12';
+  public $depart_J='03';
 
   // Horaire
-  var $depart_h = '14';
-  var $depart_m = '00';
+  public $depart_h='14';
+  public $depart_m='00';
 
   // Heures
-  var $duree = 120;
+  public $duree=120;
 
   // Informations
-  var $nom = array('fr' => 'Concours Créatif', 'en' => 'Creative Contest');
-  var $url = 'https://www.creativity.eu';
-  var $contact = 'contact@creativity.eu';
-  var $info1 = array('fr' => 'Jeudi 3 décembre 14h ---- Mardi 8 décembre 14h', 'en' => 'Thursday December 3, 2PM ---- Tuesday December 8, 2PM');
-  var $info2 = array('fr' => 'Bidart – France', 'en' => 'Bidart – France');
-  var $info3 = array('fr' => 'www.creativity.eu', 'en' => 'www.creativity.eu');
-  var $info4 = array('fr' => '', 'en' => '');
-  var $youtube = 'http://www.youtube.com/user/CreativityContest';
-  var $twitter = 'http://twitter.com/CreativityContest';
-  var $facebook = 'http://www.facebook.com/group.php?gid=123456789012#/group.php?gid=12345678900';
-  
+  public $nom=array('fr'=>'Concours Créatif', 'en'=>'Creative Contest');
+  public $info1=array('fr'=>'Jeudi 3 décembre 14h ---- Mardi 8 décembre 14h', 'en'=>'Thursday December 3, 2PM ---- Tuesday December 8, 2PM');
+  public $info2=array('fr'=>'Bidart – France', 'en'=>'Bidart – France');
+  public $info3=array('fr'=>'www.creativity.eu', 'en'=>'www.creativity.eu');
+  public $info4=array('fr'=>'', 'en'=>'');
+
+  // Adresses
+  public $url='https://www.creativity.eu';
+  public $contact='contact@creativity.eu';
+
+  // Reseaux sociaux
+  public $youtube='http://www.youtube.com/user/CreativityContest';
+  public $twitter='http://twitter.com/CreativityContest';
+  public $facebook='http://www.facebook.com/group.php?gid=123456789012#/group.php?gid=12345678900';
+    
   /**
    * Retourne l'heure de depart du concours.
    */
-  function temps_depart() {
+  public function temps_depart() {
     return mktime(
       $this->depart_h,   // Heures
       $this->depart_m,   // Minutes
@@ -54,6 +58,6 @@ class Evenement {
 
 //== GLOBALES
 
-$ev = new Evenement();
+$ev=new Evenement();
 
 ?>

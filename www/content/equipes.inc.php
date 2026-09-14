@@ -2,17 +2,17 @@
 
 include_once('pkg/verif.inc.php');
 
-e('<!-- DEBUT SUIVI -->');
+echo '<!-- DEBUT SUIVI -->';
 
 /*=== Informations diverses (Heure, Legende...) ===*/
 
-e('<div class="fluxL">');
+echo '<div class="fluxL">';
 
-e('<p class="bold">'.$titre_corps_01.'<br/>'.$titre_corps_02.'<br/><br/></p>');
+echo '<p class="bold">'.$titre_corps_01.'<br/>'.$titre_corps_02.'<br/><br/></p>';
 
 include_once('pkg/temps.inc.php'); // $H
 
-e('<p>'.heure().'</p>');
+echo '<p>'.heure().'</p>';
 
 chrono_afficher($H, ($H > 0 && $H < $ev->duree));
 
@@ -20,26 +20,26 @@ include_once('class/HeureActivite.class.php');
 
 if ($H >= 0 && $H <= $ev->duree + 1) {
   /* Afficher la legende */
-  e('<div class="tlegende">');
+  echo '<div class="tlegende">';
   $activite = new HeureActivite();
   $activite->afficher_legende();
-  e('</div>');
+  echo '</div>';
 }
 else {
   /* Afficher le a-propos */
-  e('<p class="apropos"><span class="bold">'.$txt_apropos.'</span><br/>');
-  e($txt_apropos_conception.' Olivier Z&eacute;phir '.$txt_apropos_et.' Olivier Pialot<br/>');
-  e($txt_apropos_devel.' Guillaume Rivi&egrave;re</p>');
+  echo '<p class="apropos"><span class="bold">'.$txt_apropos.'</span><br/>';
+  echo $txt_apropos_conception.' Olivier Z&eacute;phir '.$txt_apropos_et.' Olivier Pialot<br/>';
+  echo $txt_apropos_devel.' Guillaume Rivi&egrave;re</p>';
 }
 
-e('</div>');
+echo '</div>';
 
 /*=== Menu lateral avec les noms des équipes ===*/
 
 include_once('class/Equipe.class.php');
 
 /** GetExtensionName - Renvoie le nom d'un fichier sans l'extension */
-function GetFileName($File) {
+function GetFileName(string $File): string {
   return substr($File, 0, strrpos($File, '.'));
 }
 
@@ -53,9 +53,9 @@ $dirname = 'data/equipes/';
 // }
 
 $tab_dir = scandir($dirname); // PHP 5, PHP 7, PHP 8
-$tab_equipes = array();
+$tab_equipes = [];
 
-e('<ul class="equipes">');
+echo '<ul class="equipes">';
 
 /* Parcours du repertoire */
 $j=0;
@@ -71,7 +71,7 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
       /* Creer une equipe a partir du fichier */
       $equipe = new Equipe($num);
       $equipe->unserialize();
-      array_push($tab_equipes, $equipe);
+      $tab_equipes[] = $equipe;
   
       /* Calculer le nom raccourcis */
       $nom_equipe_ascii_full = str_replace('\\\'', "'", $equipe->get_nom());
@@ -91,11 +91,11 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
       }
   
       /* Afficher le raccourcis */
-      e('<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', $nom_equipe_ascii_short).'</a></li>');
+      echo '<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', $nom_equipe_ascii_short).'</a></li>';
   
       $j++;
       if ($j % 9 == 0) {
-        e('</ul><ul class="equipes">');
+        echo '</ul><ul class="equipes">';
       }
     }
   }
@@ -108,7 +108,7 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
 //   if (is_file($dirname.$f)) {
 // 
 //     if ($i % 19 == 0) {
-//       e('</ul><ul class="equipes">');
+//       echo '</ul><ul class="equipes">';
 //     }
 //     $i++;
 //  
@@ -117,23 +117,23 @@ for ($i = 0 ; $i < count($tab_dir) ; $i++) {
 //     /* Creer une equipe a partir du fichier */
 //     $equipe = new Equipe($num);
 //     $equipe->unserialize();
-//     array_push($tab_equipes, $equipe);
+//     $tab_equipes[] = $equipe;
 // 
 //     /* Afficher le raccourcis */
-//     e('<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', substr(str_replace('\\\'', "'", $equipe->get_nom()), 0, 22)).'</a></li>');
+//     echo '<li><a href="#'.$num.'">'.str_replace(' ', '&nbsp;', substr(str_replace('\\\'', "'", $equipe->get_nom()), 0, 22)).'</a></li>';
 //   }
 // }
 
-e('</ul>');
+echo '</ul>';
 
 /* Fermeture du repertoire */
 //closedir($dir);
 
 if ($H > 0 && $H <= $ev->duree) {
-  e('<p class="fluxR"><a href="equipe_activer.php?lang='.$lang.'">'.$txt_activer_fiche.'&nbsp;&nbsp;</p>');
+  echo '<p class="fluxR"><a href="equipe_activer.php?lang='.$lang.'">'.$txt_activer_fiche.'&nbsp;&nbsp;</p>';
 }
 
-e('<br class="flux" />');
+echo '<br class="flux" />';
 
 /*=== Activites des equipes ===*/
 
@@ -142,6 +142,6 @@ foreach ($tab_equipes as $key => $equipe) {
   $equipe->afficher();
 }
 
-e('<!-- FIN SUIVI -->');
+echo '<!-- FIN SUIVI -->';
 
 ?>

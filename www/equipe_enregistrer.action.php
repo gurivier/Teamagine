@@ -1,5 +1,4 @@
 <?php
-function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -55,7 +54,7 @@ else {
     
   $EquipeCommentaire = $_POST['EquipeCommentaire'] ?? '';
   $EquipeCommentaire = htmlentities(no_accent($EquipeCommentaire));
-  $EquipeCommentaire = str_replace(array("\r\n", "\n", "\r"), array('\nl', '\nl', '\nl'), $EquipeCommentaire);
+  $EquipeCommentaire = str_replace(["\r\n", "\n", "\r"], ['\nl', '\nl', '\nl'], $EquipeCommentaire);
 
   $equipe->set_commentaire($EquipeCommentaire);
 

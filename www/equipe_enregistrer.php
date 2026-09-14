@@ -1,5 +1,4 @@
 <?php
-function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -15,8 +14,8 @@ $page_equipes=true;
 include('page/head.inc.php');
 
 //== body
-e('<body>');
-e('<div id="body">');
+echo '<body>';
+echo '<div id="body">';
 
 //== banner
 include('page/entete.inc.php');
@@ -26,28 +25,28 @@ $selection='equipes';
 include('page/menu.inc.php');
 
 //== content
-e('<div id="corpsPage" class="corps">');
+echo '<div id="corpsPage" class="corps">';
 
 $num = $_GET['e'];
 
 if (isset($_GET['m']) && $_GET['m']=='err') {
   /*-- Message d'erreur --*/
-  e('<h3>'.$h3_1.'</h3>');
-  e('<p class="erreur">'.$p_11.'</p>');
-  e('<p>'.$p_12.'</p>');
+  echo '<h3>'.$h3_1.'</h3>';
+  echo '<p class="erreur">'.$p_11.'</p>';
+  echo '<p>'.$p_12.'</p>';
 }
 else {
   /*-- Confirmation --*/
-  e('<h3>'.$h3_2.'</h3>');
-  e('<p><img src="content/img/check.png" alt="OK!" />&nbsp;'.$p_21.'</p>');
-  e('<p><a href="equipes.php?lang='.$lang.'">'.$p_22.'</a></p>');
+  echo '<h3>'.$h3_2.'</h3>';
+  echo '<p><img src="content/img/check.png" alt="OK!" />&nbsp;'.$p_21.'</p>';
+  echo '<p><a href="equipes.php?lang='.$lang.'">'.$p_22.'</a></p>';
   include('content/equipe_afficher.inc.php');
 }
 
 //== end
-e('</div>'); // corpsPage
+echo '</div>'; // corpsPage
 include('page/cartouche.inc.php');
-e('</div>'); // body
-e('</body>');
-e('</html>');
+echo '</div>'; // body
+echo '</body>';
+echo '</html>';
 ?>

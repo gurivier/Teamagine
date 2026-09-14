@@ -10,40 +10,40 @@ include_once('class/Equipe.class.php');
 if (isset($_GET['e']) && est_numero_valide($_GET['e'])) {
   $num = $_GET['e'];
 }
-else if (isset($_POST['e']) && est_numero_valide($_POST['e'])) {
+elseif (isset($_POST['e']) && est_numero_valide($_POST['e'])) {
   $num = $_POST['e'];
 }
 else {
   $num = null;
-  e('<p>Num&eacute;ro d\'&eacute;quipe invalide.</p>');
+  echo '<p>Num&eacute;ro d\'&eacute;quipe invalide.</p>';
 }
 
 if ($num != null) {
     
   /* Formulaire de la fiche equipe */     
-  e('<form id="FormFicheEquipe" method="post" action="equipe_enregistrer.action.php?lang='.$lang.'&amp;e='.$num.'">');
+  echo '<form id="FormFicheEquipe" method="post" action="equipe_enregistrer.action.php?lang='.$lang.'&amp;e='.$num.'">';
 
   /* Afficher le numero de l'equipe */
-  e('<h2>'.$num.'</h2>');
+  echo '<h2>'.$num.'</h2>';
 
-  e('<p class="bold">'.$txt_avert_save.'</p>');
+  echo '<p class="bold">'.$txt_avert_save.'</p>';
 
-  e('<p class="warn italic bold">('.$txt_avert_accents.')</p>');
+  echo '<p class="warn italic bold">('.$txt_avert_accents.')</p>';
 
   /* Affiche le formulaire */
   $equipe = new Equipe($num);
   $equipe->unserialize();
   $equipe->afficher_formulaire();
 
-  e('<h3>'.$h3_save.'</h3>');
+  echo '<h3>'.$h3_save.'</h3>';
 
-  e('<p>');
-  e($txt_numero.' <input class="text" type="text" id="Login" name="e" value="'.$num.'" disabled="disabled" /> ');
-  e($txt_passwd.' <input class="text" type="password" id="Pass" name="Pass" /> ');
-  e('<input type="submit" value="'.$txt_btn_enregistrer.'" id="FormLogin" name="FormLogin" />');
-  e('</p>');
+  echo '<p>';
+  echo $txt_numero.' <input class="text" type="text" id="Login" name="e" value="'.$num.'" disabled="disabled" /> ';
+  echo $txt_passwd.' <input class="text" type="password" id="Pass" name="Pass" /> ';
+  echo '<input type="submit" value="'.$txt_btn_enregistrer.'" id="FormLogin" name="FormLogin" />';
+  echo '</p>';
 
-  e('</form>');
+  echo '</form>';
 }
 
 ?>

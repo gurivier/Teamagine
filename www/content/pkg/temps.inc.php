@@ -1,13 +1,11 @@
 <?php
 
-function mytime(){return time();}
-
 /**
  * Retourne l'heure actuelle,
  * formatee dans une chaine de caracteres.
  */
-function heure() {
-  return date( "d M Y | H:i:s", mytime());
+function heure(): string {
+  return date( "d M Y | H:i:s", time());
 }
 
 /**
@@ -16,7 +14,7 @@ function heure() {
  * Par exemple, s'il est 15h30 et que le concours a commence a 14H00,
  * alors nous avons H=2, et le crenau actuel est 15:00 - 16:00.
  */
-function heure_intervalle_courant($h, &$heure_debut, &$heure_fin) { 
+function heure_intervalle_courant(int $h, string &$heure_debut, string &$heure_fin): void { 
   global $ev;
   
   $temps_depart = $ev->temps_depart();
@@ -33,10 +31,10 @@ function heure_intervalle_courant($h, &$heure_debut, &$heure_fin) {
  * - a venir jusqu'a l'heure de depart du concours (H<0),
  * - ecoulees depuis l'heure de depart du concours (H>0).
  */
-function heure_H() { 
+function heure_H(): int { 
   global $ev;
     
-  $time = mytime(); // Heure courante
+  $time = time(); // Heure courante
 
   $temps_depart = $ev->temps_depart();
 
@@ -55,34 +53,34 @@ function heure_H() {
   return $H;
 }
 
-function chrono_afficher_alpha($h) {
-
-  e('<span class="bold">'.$h.'</span><br/>');
+function chrono_afficher_alpha(int $h): void {
+  echo '<span class="bold">'.$h.'</span><br/>';
+  $debut='';
+  $fin='';
   heure_intervalle_courant($h, $debut, $fin);
-  e($debut.'<br/>'.$fin);
-
+  echo $debut.'<br/>'.$fin;
 }
 
-function chrono_afficher($h, $avec_couleur) {
+function chrono_afficher(int $h, bool $avec_couleur): void {
   global $ev;
 
   $couleur = $avec_couleur ? $ev->couleur : 'gris';
   
   $nombre = $h; // Le nombre a decomposer
 
-  e('<div class="chrono">');
+  echo '<div class="chrono">';
 
   /* Debut de l'affichage */
-  e('<img src="content/img/chrono2026/'.$couleur.'/bordG.png" alt="[" />');
-  e('<img src="content/img/chrono2026/'.$couleur.'/H.png" alt="H" />');
-  e('<img src="content/img/chrono2026/'.$couleur.'/egal.png" alt="=" />');
+  echo '<img src="content/img/chrono2026/'.$couleur.'/bordG.png" alt="[" />';
+  echo '<img src="content/img/chrono2026/'.$couleur.'/H.png" alt="H" />';
+  echo '<img src="content/img/chrono2026/'.$couleur.'/egal.png" alt="=" />';
 
   /* Si le nombre est negatif,
    * afficher un moins,
    * puis afficher la partie absolue.
    */
   if ($nombre < 0) {
-    e('<img src="content/img/chrono2026/'.$couleur.'/moins.png" alt="-" />');
+    echo '<img src="content/img/chrono2026/'.$couleur.'/moins.png" alt="-" />';
     $nombre = $nombre * -1;
   }
 
@@ -95,18 +93,20 @@ function chrono_afficher($h, $avec_couleur) {
 
   /* Affichage du nombre */
   for ($i = count($tab)-1 ; $i >= 0  ; $i--) {
-    e('<img src="content/img/chrono2026/'.$couleur.'/'.$tab[$i].'.png" alt="'.$tab[$i].'" />');
+    echo '<img src="content/img/chrono2026/'.$couleur.'/'.$tab[$i].'.png" alt="'.$tab[$i].'" />';
   }
   
   /* Fin de l'affichage */
-  e('<img src="content/img/chrono2026/'.$couleur.'/bordD.png" alt="]" />');
+  echo '<img src="content/img/chrono2026/'.$couleur.'/bordD.png" alt="]" />';
 
   if ($h >= -3 && $h <= $ev->duree + 1) {
+    $debut='';
+    $fin='';
     heure_intervalle_courant($h, $debut, $fin);
-    e('<div class="center bold '.$couleur.'">'.date('M. d').' | '.$debut.'&nbsp; &gt; &nbsp;'.$fin.'</div>');
+    echo '<div class="center bold '.$couleur.'">'.date('M. d').' | '.$debut.'&nbsp; &gt; &nbsp;'.$fin.'</div>';
   }
   
-  e('</div>');
+  echo '</div>';
 }
 
 //== Globals

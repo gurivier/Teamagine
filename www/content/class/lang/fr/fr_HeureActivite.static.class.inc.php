@@ -1,6 +1,6 @@
 <?php
 
-HeureActivite::$G_txt=array(
+HeureActivite::$G_txt=[
  'etape' => 'Phase',
  'quoi' => 'Sur quoi ?',
  'outils' => 'Outils/M&eacute;thode',
@@ -8,9 +8,9 @@ HeureActivite::$G_txt=array(
  'com' => 'Commentaire',
  'personnes' => 'Nbr. pers.',
  'rmq_nbr_pers' => 'Nombre de personnes qui participent &agrave; l\'activit&eacute;'
-);
+];
        
-HeureActivite::$G_ETAPE=array(
+HeureActivite::$G_ETAPE=[
  'ana' => 'Analyse du besoin',
  'con' => 'Recherche de concepts',
  'sol' => 'Elaboration de solutions',
@@ -21,11 +21,11 @@ HeureActivite::$G_ETAPE=array(
  'proj' => 'Projet',
  'tac' => 'T&acirc;che',
  'aut' => 'Autre'
-);
+];
 
-HeureActivite::$G_GROUP_ETAPE=array('Organisation/Planification');
+HeureActivite::$G_GROUP_ETAPE=['Organisation/Planification'];
 
-HeureActivite::$G_QUOI=array(
+HeureActivite::$G_QUOI=[
  'pro' => 'Produit global',
  'arc' => 'Architecture',
  'fon' => 'Fonction',
@@ -36,11 +36,11 @@ HeureActivite::$G_QUOI=array(
  'sen' => 'Dimension sensorielle',
  'erg' => 'Ergonomie',
  'aut' => 'Autre'
-);
+];
 
-HeureActivite::$G_GROUP_QUOI=array('Zoom sur');
+HeureActivite::$G_GROUP_QUOI=['Zoom sur'];
 
-HeureActivite::$G_OUTILS=array(
+HeureActivite::$G_OUTILS=[
  'web' => 'WEB',
  'rdv' => 'RDV client',
  'bra' => 'Brainstorming / cr&eacute;ativit&eacute;',
@@ -56,6 +56,6 @@ HeureActivite::$G_OUTILS=array(
  'tes' => 'Test / Exp&eacute;rimentation in vivo',
  'exp' => 'Appel Expert',
  'aut' => 'Autre'
-);
+];
 
 ?>

@@ -1,5 +1,4 @@
 <?php
-function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -14,8 +13,8 @@ include($i18n);
 include('page/head.inc.php');
 
 //== body
-e('<body>');
-e('<div id="body">');
+echo '<body>';
+echo '<div id="body">';
 
 //== banner
 include('page/entete.inc.php');
@@ -25,18 +24,18 @@ $selection='palmares';
 include('page/menu.inc.php');
 
 //== content
-e('<div id="corpsPage" class="corps">');
+echo '<div id="corpsPage" class="corps">';
 
-e('<p class="italic bold center">'.$titre_corps.'</p>');
+echo '<p class="italic bold center">'.$titre_corps.'</p>';
 
 include('content/palmares.inc.php');
 
-e('<br/><br/>');
+echo '<br/><br/>';
 
 //== end
-e('</div>'); // corpsPage
+echo '</div>'; // corpsPage
 include('page/cartouche.inc.php');
-e('</div>'); // body
-e('</body>');
-e('</html>');
+echo '</div>'; // body
+echo '</body>';
+echo '</html>';
 ?>

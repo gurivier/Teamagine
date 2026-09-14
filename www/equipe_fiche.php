@@ -1,5 +1,4 @@
 <?php
-function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -15,8 +14,8 @@ $page_equipes=true;
 include('page/head.inc.php');
 
 //== body
-e('<body>');
-e('<div id="body">');
+echo '<body>';
+echo '<div id="body">';
 
 //== banner
 include('page/entete.inc.php');
@@ -26,14 +25,14 @@ $selection='equipes';
 include('page/menu.inc.php');
 
 //== content
-e('<div id="corpsPage" class="corps">');
+echo '<div id="corpsPage" class="corps">';
 
 include('content/equipe_fiche.inc.php');
 
 //== end
-e('</div>'); // corpsPage
+echo '</div>'; // corpsPage
 include('page/cartouche.inc.php');
-e('</div>'); // body
-e('</body>');
-e('</html>');
+echo '</div>'; // body
+echo '</body>';
+echo '</html>';
 ?>

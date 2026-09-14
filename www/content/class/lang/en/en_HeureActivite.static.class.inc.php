@@ -1,6 +1,6 @@
 <?php /* Traduction de Olivier Zephiz 15 Octobre 2008 */
 
-HeureActivite::$G_txt=array(
+HeureActivite::$G_txt=[
  'etape' => 'Phase',
  'quoi' => 'On what?',
  'outils' => 'Tool/Method',
@@ -8,9 +8,9 @@ HeureActivite::$G_txt=array(
  'com' => 'Comments',
  'personnes' => 'Num. pers.',
  'rmq_nbr_pers' => 'Number of persons who take part in the activity'
-);
+];
 
-HeureActivite::$G_ETAPE=array(
+HeureActivite::$G_ETAPE=[
  'ana' => 'Needs analysis/specifications',
  'con' => 'Concept search',
  'sol' => 'Solutions developpment',
@@ -21,11 +21,11 @@ HeureActivite::$G_ETAPE=array(
  'proj' => 'Project',
  'tac' => 'Task',
  'aut' => 'Other'
-);
+];
 
-HeureActivite::$G_GROUP_ETAPE=array('Planning/organisation');
+HeureActivite::$G_GROUP_ETAPE=['Planning/organisation'];
 
-HeureActivite::$G_QUOI=array(
+HeureActivite::$G_QUOI=[
  'pro' => 'Product macro view',
  'arc' => 'Architecture',
  'fon' => 'Functions',
@@ -36,11 +36,11 @@ HeureActivite::$G_QUOI=array(
  'sen' => 'Implied sens',
  'erg' => 'Ergonomics',
  'aut' => 'Other'
-);
+];
 
-HeureActivite::$G_GROUP_QUOI=array('Zoom on');
+HeureActivite::$G_GROUP_QUOI=['Zoom on'];
 
-HeureActivite::$G_OUTILS=array(
+HeureActivite::$G_OUTILS=[
  'web' => 'WEB',
  'rdv' => 'Customer meeting',
  'bra' => 'Brainstorming / creativity',
@@ -56,6 +56,6 @@ HeureActivite::$G_OUTILS=array(
  'tes' => 'Test / Live experimentation',
  'exp' => 'Expert support',
  'aut' => 'Other'
-);
+];
 
 ?>

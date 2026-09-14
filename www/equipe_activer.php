@@ -1,5 +1,4 @@
 <?php
-function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -14,8 +13,8 @@ include($i18n);
 include('page/head.inc.php');
 
 //== body
-e('<body>');
-e('<div id="body">');
+echo '<body>';
+echo '<div id="body">';
 
 //== banner
 include('page/entete.inc.php');
@@ -25,27 +24,27 @@ $selection='equipes';
 include('page/menu.inc.php');
 
 //== content
-e('<div id="corpsPage" class="corps">');
+echo '<div id="corpsPage" class="corps">';
 
 /*-- Message d'erreur --*/
 if (isset($_GET['mess']) && $_GET['mess'] == 'err') {
-  e('<p class="erreur">'.$txt_avert_passwd.'</p>');
+  echo '<p class="erreur">'.$txt_avert_passwd.'</p>';
 }
 
 /*-- Formulaire --*/
-e('<h3>'.$h3_1.'</h3>');
-e('<form id="FormLoginEquipe" method="post" action="equipe_verifier.action.php?lang='.$lang.'">');
-e('<p>');
-e($txt_numero.' <input class="text" type="text" id="Login" name="e" /> ');
-e($txt_passwd.' <input class="text" type="password" id="Pass" name="Pass" /> ');
-e('<input type="submit" value="'.$txt_btn_valider.'" id="FormLogin" name="FormLogin" />');
-e('</p>');
-e('</form>');
+echo '<h3>'.$h3_1.'</h3>';
+echo '<form id="FormLoginEquipe" method="post" action="equipe_verifier.action.php?lang='.$lang.'">';
+echo '<p>';
+echo $txt_numero.' <input class="text" type="text" id="Login" name="e" /> ';
+echo $txt_passwd.' <input class="text" type="password" id="Pass" name="Pass" /> ';
+echo '<input type="submit" value="'.$txt_btn_valider.'" id="FormLogin" name="FormLogin" />';
+echo '</p>';
+echo '</form>';
 
 //== end
-e('</div>'); // corpsPage
+echo '</div>'; // corpsPage
 include('page/cartouche.inc.php');
-e('</div>'); // body
-e('</body>');
-e('</html>');
+echo '</div>'; // body
+echo '</body>';
+echo '</html>';
 ?>

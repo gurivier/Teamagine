@@ -14,7 +14,7 @@ include_once('auth/auth.inc.php');
 if (isset($_GET['e']) && est_numero_valide($_GET['e'])) {
   $num = $_GET['e'];
 }
-else if (isset($_POST['e']) && est_numero_valide($_POST['e'])) {
+elseif (isset($_POST['e']) && est_numero_valide($_POST['e'])) {
   $num = $_POST['e'];
 }
 else {

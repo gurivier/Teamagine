@@ -6,15 +6,15 @@ include_once('class/Equipe.class.php');
 
 class Vainqueur {
     
-  function __construct($num_equipe, $txt_prix, $img_prix) {
+  function __construct(string $num_equipe, string $txt_prix, string $img_prix) {
     $this->num_equipe = $num_equipe;
     $this->txt_prix = $txt_prix;
     $this->img_prix = $img_prix;
   }
 
-  var $num_equipe;
-  var $txt_prix;
-  var $img_prix;
+  public string $num_equipe;
+  public string $txt_prix;
+  public string $img_prix;
 }
 
 //== VARIABLE

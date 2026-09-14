@@ -1,5 +1,4 @@
 <?php
-function e($s){echo $s."\n";}
 
 include_once('config/Evenement.class.php'); // $ev
 
@@ -15,9 +14,9 @@ $page_equipes=true;
 include('page/head.inc.php');
 
 //== body
-e('<body>');
-e('<script type="text/javascript">window.resizeTo(400, 480);</script>');
-e('<div id="body">');
+echo '<body>';
+echo '<script type="text/javascript">window.resizeTo(400, 480);</script>';
+echo '<div id="body">';
 
 //== content
 include_once('content/class/HeureActivite.class.php');
@@ -25,7 +24,7 @@ $activite = new HeureActivite();
 $activite->afficher_legende();
 
 //== end
-e('</div>'); // body
-e('</body>');
-e('</html>');
+echo '</div>'; // body
+echo '</body>';
+echo '</html>';
 ?>

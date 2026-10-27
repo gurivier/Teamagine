@@ -42,7 +42,7 @@ function generate_php_provider(string $fullname, string $provider_template): voi
     
     if (!is_dir($cache_dir_fullname)) {
         echo '...creating directory: '.$cache_dir_fullname."\n";
-        mkdir($cache_dir_fullname, 0775);
+        mkdir($cache_dir_fullname, 0755);
     }
 }
 
@@ -107,14 +107,31 @@ function build(string $provider_template): void {
     
     if (!is_dir($builder_cache_dir_fullname)) {
         echo '...creating directory: '.$builder_cache_dir_fullname."\n";
-        mkdir($builder_cache_dir_fullname, 0775);
+        mkdir($builder_cache_dir_fullname, 0755);
     }
 
     $config_runtime_dir_fullname='config/runtime';
     
     if (!is_dir($config_runtime_dir_fullname)) {
         echo '...creating directory: '.$config_runtime_dir_fullname."\n";
-        mkdir($config_runtime_dir_fullname, 0775);
+        mkdir($config_runtime_dir_fullname, 0755);
+    }
+}
+
+function clear(): void {
+    $config_runtime_dir_fullname='config/runtime';
+    
+    if (is_dir($config_runtime_dir_fullname)) {
+        $names = scandir($config_runtime_dir_fullname);
+        foreach ($names as $name) {
+            if ($name[0] != '.') {
+                $fullname = $config_runtime_dir_fullname.'/'.$name;
+                echo '...deleting file: '.$fullname."\n";
+                unlink($fullname);
+            }
+        }
+        rmdir($config_runtime_dir_fullname);
+        echo '...deleting directory: '.$config_runtime_dir_fullname."\n";
     }
 }
 

@@ -21,7 +21,7 @@ include_once('class/HeureActivite.class.php');
 if ($H >= 0 && $H <= $ev->duree + 1) {
   /* Afficher la legende */
   e('<div class="tlegende">');
-  $activite = new HeureActivite();
+  $activite = new HeureActivite($lang);
   $activite->afficher_legende();
   e('</div>');
 }

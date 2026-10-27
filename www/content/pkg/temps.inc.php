@@ -5,7 +5,7 @@
  * formatee dans une chaine de caracteres.
  */
 function heure(): string {
-  return date( "d M Y | H:i:s", time());
+  return date("d M Y | H:i:s", time());
 }
 
 /**
@@ -21,9 +21,9 @@ function heure_intervalle_courant(int $h, string &$heure_debut, string &$heure_f
 
   $temps_courant = $temps_depart + ($h-1) * 3600;
 
-  $heure_debut = date( "H:i", $temps_courant);
+  $heure_debut = date("H:i", $temps_courant);
 
-  $heure_fin = date( "H:i", $temps_courant+3600);
+  $heure_fin = date("H:i", $temps_courant+3600);
 }
 
 /**

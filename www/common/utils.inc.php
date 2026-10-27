@@ -1,5 +1,5 @@
 <?php
 if(!function_exists('e')){
- function e($s){echo $s;}
+ function e(string $s):void{echo $s;}
 }
 ?>

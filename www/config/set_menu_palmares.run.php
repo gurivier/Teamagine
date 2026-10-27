@@ -1,6 +1,6 @@
 <?php
 
-function set_menu_palmares(bool $state){
+function set_menu_palmares(bool $state):void {
   if($state){
     touch('runtime/palmares');
   }

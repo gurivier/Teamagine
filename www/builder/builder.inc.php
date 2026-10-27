@@ -1,5 +1,7 @@
 <?php
 
+$__f_stdout__=null;
+
 $langs=['fr', 'en'];
 
 function generate_php_provider(string $fullname, string $provider_template): void {
@@ -46,15 +48,26 @@ function generate_php_provider(string $fullname, string $provider_template): voi
 
 function generate_html_page(string $fullname): void {
     global $langs;
+    global $__f_stdout__;
     $basename = basename($fullname, '.html.php');
     $filename_html_php = $basename.'.html.php';
 
+    function e(string $s):void{
+        global $__f_stdout__;
+        fputs($__f_stdout__, $s);
+    }
+
+    $_GET = [];
+    
     foreach ($langs as $lang) {
         $l = ($lang == '') ? '' : '-'.$lang;
         $filename_html = $basename.$l.'.html';
         $out_fullname = str_replace($filename_html_php, $filename_html, $fullname);
         echo '...generating static file: '.$out_fullname."\n";
-        system("php $fullname $lang > $out_fullname");
+        $_GET['lang']=$lang;
+        $__f_stdout__=fopen($out_fullname, 'w');
+        include($fullname);
+        fclose($__f_stdout__);
     }
 }
 

@@ -6,9 +6,8 @@ class HeureActivite {
 
   //-- CONSTRUCTEURS
 
-  public function __construct() {
-    global $lang;
-      
+  public function __construct(string $lang) {
+
     /* Creation des tableaux */
     $this->m_activite_etape = [];
     $this->m_activite_quoi = [];

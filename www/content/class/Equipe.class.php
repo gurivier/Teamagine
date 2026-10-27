@@ -30,7 +30,7 @@ class Equipe {
 
     /* Initialiser m_activites */
     for ($i = 0 ; $i < $ev->duree ; $i++) {
-      $this->ajouter_activite(new HeureActivite());
+      $this->ajouter_activite(new HeureActivite($lang));
     }
 
     /* Initialiser le texte du contenu */
@@ -221,7 +221,7 @@ class Equipe {
 
       //--
       e('<div class="plegende"><a class="legende" href="#'.$this->m_num.'">&nbsp; '.$this->m_txt_legende.' &nbsp;<span class="survol">');
-      $activite = new HeureActivite();
+      $activite = new HeureActivite($lang);
       $activite->afficher_legende();
       e('</span></a></div>');
       //--
@@ -347,7 +347,7 @@ class Equipe {
 
       //--
       e('<div class="plegende"><a class="legende" href="#'.$this->m_num.'">&nbsp; '.$this->m_txt_legende.' &nbsp;<span class="survol">');
-      $activite = new HeureActivite();
+      $activite = new HeureActivite($lang);
       $activite->afficher_legende();
       e('</span></a></div>');
       //--

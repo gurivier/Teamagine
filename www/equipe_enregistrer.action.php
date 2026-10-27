@@ -14,11 +14,11 @@ include_once('content/pkg/temps.inc.php'); // $H
 include_once('content/pkg/no_accent.inc.php');
 
 $num = $_GET['e'] ?? null;
-$Pass = $_POST['Pass'] ?? '';
+$mdp = $_POST['Pass'] ?? '';
 
 /* Verification du login et du mot de passe */
 
-if ($num == null || !est_numero_valide($num) || $Pass == '' || $Pass != getPasswd($num) || !($H > 0 && $H <= 25)) {
+if ($num === null || !est_numero_valide($num) || $mdp === '' || $mdp !== getPasswd($num) || !($H > 0 && $H <= 25)) {
 
   /*-- Message d'erreur --*/
 
@@ -122,6 +122,9 @@ else {
 
   $equipe->serialize();
 
+  touch('equipes.dev.php');
+  touch('equipes_debrief.dev.php');
+  
   /* Afficher */
 
   header('location: equipe_enregistrer.php?lang='.$lang.'&e='.$num);

@@ -8,17 +8,14 @@
     * www/page/lang
 
 * Retirer les données de démonstration
-  * Fichier "www/content/pkg/temps.inc.php" :
-     * Dans la fonction heure_H(), commenter la ligne : return 1;
+  * Fichier "www/config/Evenement.class.php" :
+     * Dans la fonction __construct(), commenter les lignes d'initialisation automatique de la date de départ
   * Répertoire "www/data/equipes/" : supprimer tous les fichiers de nom "???.txt"
 
 * Sortir du mode développement
   * Dans le fichier "www/config/Evenement.class.php" :
      * Désactiver l'affichage des erreurs : $montrer_erreurs_php = false;
 
-* Déposer le répertoire "www"
+* Déposer le répertoire "www" sur le serveur
 
-* Attribuer les droits en écriture
-  * Répertoire "www/data/"
-  * Répertoire "www/data/equipes/"
-
+* Invoquer builder-build.run.php

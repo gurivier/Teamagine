@@ -1,5 +1,7 @@
 <?php
 
+include_once('common/utils.inc.php');
+
 include_once('config/Evenement.class.php'); // $ev
 
 include_once('pkg/erreurs.inc.php');
@@ -14,8 +16,8 @@ $page_equipes=true;
 include('page/head.inc.php');
 
 //== body
-echo '<body>';
-echo '<div id="body">';
+echo('<body>');
+echo('<div id="body">');
 
 //== banner
 include('page/entete.inc.php');
@@ -25,14 +27,14 @@ $selection='equipes';
 include('page/menu.inc.php');
 
 //== content
-echo '<div id="corpsPage" class="corps">';
+echo('<div id="corpsPage" class="corps">');
 
 include('content/equipe_fiche.inc.php');
 
 //== end
-echo '</div>'; // corpsPage
+echo('</div>'); // corpsPage
 include('page/cartouche.inc.php');
-echo '</div>'; // body
-echo '</body>';
-echo '</html>';
+echo('</div>'); // body
+echo('</body>');
+echo('</html>');
 ?>

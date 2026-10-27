@@ -4,6 +4,9 @@
 
 class Evenement {
 
+  // https://www.php.net/manual/fr/timezones.php
+  public string $fuseau='Europe/Paris';
+    
   // Execution
   public bool $montrer_erreurs_php=true;
 
@@ -12,7 +15,7 @@ class Evenement {
     
   // Membres des equipes
   public int $max_membres=10;
-  
+    
   // Date
   public string $depart_A='2026';
   public string $depart_M='12';
@@ -21,10 +24,11 @@ class Evenement {
   // Horaire
   public string $depart_h='14';
   public string $depart_m='00';
-
+    
   // Heures
-  public $duree=120;
-
+  public int $duree=120;
+  public int $H_ouvrir_equipes=-1;
+    
   // Informations
   public array $nom=['fr'=>'Concours Créatif', 'en'=>'Creative Contest'];
   public array $info1=['fr'=>'Jeudi 3 décembre 14h ---- Mardi 8 décembre 14h', 'en'=>'Thursday December 3, 2PM ---- Tuesday December 8, 2PM'];
@@ -40,11 +44,22 @@ class Evenement {
   public string $youtube='http://www.youtube.com/user/CreativityContest';
   public string $twitter='http://twitter.com/CreativityContest';
   public string $facebook='http://www.facebook.com/group.php?gid=123456789012#/group.php?gid=12345678900';
+
+  function __construct(){
+      date_default_timezone_set($this->fuseau);
+      /* * * A COMMENTER * * */
+      $this->depart_A = date('Y');
+      $this->depart_M = date('m');
+      $this->depart_J = date('d');
+      $this->depart_h = strval(intval(date('H'))-1);
+      $this->depart_m = '00';
+      /* * * * * * * * * * * */
+  }
     
   /**
    * Retourne l'heure de depart du concours.
    */
-  public function temps_depart(): string {
+  public function temps_depart(): int {
     return mktime(
       $this->depart_h,   // Heures
       $this->depart_m,   // Minutes

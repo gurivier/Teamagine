@@ -1,11 +1,13 @@
 <?php
 
+include_once('common/utils.inc.php');
+
 include_once('config/Evenement.class.php'); // $ev
 
 include_once('pkg/erreurs.inc.php');
 
 //== i18n
-$lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? 'fr' : $_GET['lang'];
+$lang=(!isset($_GET['lang']) || !($_GET['lang']=='fr' || $_GET['lang']=='en')) ? (isset($argv[1]) ? $argv[1] : 'fr') : $_GET['lang'];
 $i18n='content/lang/'.$lang.'/'.$lang.'_reglement.inc.php'; // $titre_page  $titre_corps
 include($i18n);
 
@@ -13,8 +15,8 @@ include($i18n);
 include('page/head.inc.php');
 
 //== body
-echo '<body>';
-echo '<div id="body">';
+e('<body>');
+e('<div id="body">');
 
 //== banner
 include('page/entete.inc.php');
@@ -24,16 +26,16 @@ $selection='reglement';
 include('page/menu.inc.php');
 
 //== content
-echo '<div id="corpsPage" class="corps">';
+e('<div id="corpsPage" class="corps">');
 
-echo '<p class="italic bold center">'.$titre_page.'</p>';
+e('<p class="italic bold center">'.$titre_page.'</p>');
 
 include('content/reglement.inc.php');
 
 //== end
-echo '</div>'; // corpsPage
+e('</div>'); // corpsPage
 include('page/cartouche.inc.php');
-echo '</div>'; // body
-echo '</body>';
-echo '</html>';
+e('</div>'); // body
+e('</body>');
+e('</html>');
 ?>

@@ -17,7 +17,7 @@ $dir = opendir($dirname);
 
 $tab_equipes = [];
 
-echo '<ul class="equipes">';
+e('<ul class="equipes">');
 
 /* Parcours du repertoire */
 $i = 1;
@@ -25,7 +25,7 @@ while ($f = readdir($dir)) {
   if (is_file($dirname.$f)) {
 
     if ($i % 9 == 0) {
-      echo '</ul><ul class="equipes">';
+      e('</ul><ul class="equipes">');
     }
     $i++;
  
@@ -37,22 +37,22 @@ while ($f = readdir($dir)) {
     $tab_equipes[] = $equipe;
 
     /* Afficher le raccourcis */
-    echo '<li><a href="#'.$num.'">'.$num.'-'.str_replace(' ', '&nbsp;', $equipe->get_nom()).'</a></li>';
+    e('<li><a href="#'.$num.'">'.$num.'-'.str_replace(' ', '&nbsp;', $equipe->get_nom()).'</a></li>');
   }
 }
 
-echo '</ul>';
+e('</ul>');
 
 /* Fermeture du repertoire */
 closedir($dir);
 
-echo '<br class="flux" />';
+e('<br class="flux" />');
 
 /* Afficher les equipes */
 foreach ($tab_equipes as $key=>$equipe) {
   $equipe->afficher_debrief();
 }
 
-echo '<!-- FIN DEBRIEF -->';
+e('<!-- FIN DEBRIEF -->');
 
 ?>

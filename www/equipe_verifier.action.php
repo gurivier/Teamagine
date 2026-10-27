@@ -21,9 +21,11 @@ else {
   $num = null;
 }
 
+$mdp = $_POST['Pass'] ?? '';
+
 /* Verification du login et du mot de passe */
 
-if ($num == null || $_POST['Pass'] == '' || $_POST['Pass'] != getPasswd($num)) {
+if ($num === null || !est_numero_valide($num) || $mdp === '' || $mdp !== getPasswd($num)) {
   header('location: equipe_activer.php?lang='.$lang.'&mess=err');
 }
 else {

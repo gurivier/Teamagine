@@ -74,40 +74,12 @@ function generate_html_page(string $fullname): void {
 function build(string $provider_template): void {
     $dev_fullnames = [];
     $htm_fullnames = [];
-    
-    $entries = ['.'];
-    while (count($entries) > 0) {
-        $entry = array_pop($entries);
-        $names = scandir($entry);
 
-        foreach ($names as $name) {
-            if ($name[0] != '.') {
-                if (is_dir($entry.'/'.$name)) {
-                    $entries[] = $entry.'/'.$name;
-                }
-                else if (str_ends_with($name, '.dev.php')) {
-                    $dev_fullnames[] = $entry.'/'.$name;
-                }
-                else if (str_ends_with($name, '.html.php')) {
-                    $htm_fullnames[] = $entry.'/'.$name;
-                }
-            }
-        }
-    }
-
-    foreach ($htm_fullnames as $fullname){
-        generate_html_page($fullname);
-    }
+    $builder_runtime_dir_fullname='builder/runtime';
     
-    foreach ($dev_fullnames as $fullname){
-        generate_php_provider($fullname, $provider_template);
-    }
-
-    $builder_cache_dir_fullname='builder/cache';
-    
-    if (!is_dir($builder_cache_dir_fullname)) {
-        echo '...creating directory: '.$builder_cache_dir_fullname."\n";
-        mkdir($builder_cache_dir_fullname, 0755);
+    if (!is_dir($builder_runtime_dir_fullname)) {
+        echo '...creating directory: '.$builder_runtime_dir_fullname."\n";
+        mkdir($builder_runtime_dir_fullname, 0755);
     }
 
     $config_runtime_dir_fullname='config/runtime';
@@ -116,11 +88,65 @@ function build(string $provider_template): void {
         echo '...creating directory: '.$config_runtime_dir_fullname."\n";
         mkdir($config_runtime_dir_fullname, 0755);
     }
+
+    $f=fopen('builder/runtime/provider_cache_dirs.lst', 'w');
+    
+    $entries = ['.'];
+    while (count($entries) > 0) {
+        $entry = array_pop($entries);
+        $names = scandir($entry);
+        $dir_registred = false;
+
+        foreach ($names as $name) {
+            if ($name[0] != '.') {
+                if (is_dir($entry.'/'.$name)) {
+                    $entries[] = $entry.'/'.$name;
+                }
+                else if (str_ends_with($name, '.dev.php')) {
+                    $dev_fullnames[] = $entry.'/'.$name;
+                    $dir_registred = true;
+                }
+                else if (str_ends_with($name, '.html.php')) {
+                    $htm_fullnames[] = $entry.'/'.$name;
+                }
+            }
+        }
+
+        if ($dir_registred) {
+            $cache_dir_fullname=$entry.'/cache';
+            fputs($f, $cache_dir_fullname."\n");
+        }
+    }
+
+    fclose($f);
+    
+    foreach ($htm_fullnames as $fullname){
+        generate_html_page($fullname);
+    }
+    
+    foreach ($dev_fullnames as $fullname){
+        generate_php_provider($fullname, $provider_template);
+    }
 }
 
 function clear(): void {
-    $config_runtime_dir_fullname='config/runtime';
+    $builder_runtime_dir_fullname='builder/runtime';
     
+    if (is_dir($builder_runtime_dir_fullname)) {
+        $names = scandir($builder_runtime_dir_fullname);
+        foreach ($names as $name) {
+            if ($name[0] != '.') {
+                $fullname = $builder_runtime_dir_fullname.'/'.$name;
+                echo '...deleting file: '.$fullname."\n";
+                unlink($fullname);
+            }
+        }
+        echo '...deleting directory: '.$builder_runtime_dir_fullname."\n";
+        rmdir($builder_runtime_dir_fullname);
+    }
+
+    $config_runtime_dir_fullname='config/runtime';
+
     if (is_dir($config_runtime_dir_fullname)) {
         $names = scandir($config_runtime_dir_fullname);
         foreach ($names as $name) {
@@ -130,8 +156,8 @@ function clear(): void {
                 unlink($fullname);
             }
         }
-        rmdir($config_runtime_dir_fullname);
         echo '...deleting directory: '.$config_runtime_dir_fullname."\n";
+        rmdir($config_runtime_dir_fullname);
     }
 }
 
@@ -200,6 +226,7 @@ function clean(): void {
     }
 }
 
+/*
 function clean_cache_files(): void {
     global $langs;
 
@@ -233,7 +260,29 @@ function clean_cache_files(): void {
                 unlink($fullname);
             }
         }
-    }    
+    }
+}
+*/
+
+function clean_cache_files(): void {
+    global $langs;
+    
+    $f=fopen('builder/runtime/provider_cache_dirs.lst', 'r');
+    while(!feof($f)){
+        $cache_dir_fullname=trim(fgets($f));
+
+        if ($cache_dir_fullname != ''){
+            $names = scandir($cache_dir_fullname);
+            foreach ($names as $name) {
+                if ($name[0] != '.') {
+                    $fullname = $cache_dir_fullname.'/'.$name;
+                    //echo '...deleting file: '.$fullname."\n";
+                    unlink($fullname);
+                }
+            }
+        }
+    }
+    fclose($f);
 }
 
 ?>

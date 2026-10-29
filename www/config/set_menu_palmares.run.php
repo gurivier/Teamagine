@@ -9,7 +9,7 @@ function set_menu_palmares(bool $state):void {
   }
   include('../builder/builder.inc.php');
   clean_cache_files();
-  touch('../builder/cache/last_refresh');
+  touch('../builder/runtime/last_refresh');
 }
 
 if (isset($_GET['state'])) {
